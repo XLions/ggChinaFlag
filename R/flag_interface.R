@@ -10,7 +10,8 @@
     ROC_KMT = "plot_ROC_KMT_flag"
   ),
   party = list(
-    # reserved for future party flags
+    CCP="plot_CCP",
+    KMT="plot_KMT"
   )
 )
 

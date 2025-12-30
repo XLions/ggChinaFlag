@@ -420,7 +420,7 @@ plot_ROC_Beiyang_flag<-function(label=T){
 #' \code{\link[ggforce]{geom_circle}}
 #'
 #' @author
-#' 设计者：孙中山（方案提议）、陆皓东（青天白日设计）；
+#' 设计者：孙中山（方案提议）、陆皓东（青天白日设计）
 #'
 #' @export
 plot_ROC_KMT_flag<-function(label=T){
