@@ -1,7 +1,7 @@
 Package: ggChinaFlag
 Type: Package
 Title: Drawing Chinese National and Historical Flags with ggplot2
-Version: 0.1.0
+Version: 0.1.1
 Authors@R:
     person("Zhaoshuo", "Liu",
            email = "lzs19970811@outlook.com",
