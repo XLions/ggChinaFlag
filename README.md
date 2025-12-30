@@ -22,13 +22,27 @@ of Chinese national and historical flags using **ggplot2** and analytic geometry
 
 ---
 
-## 📦 Installation | 安装方法
+## 📦 Usage | 使用方法
 
-### Install from GitHub
+### Install from GitHub 安装
 
 ```r
 # install.packages("devtools")
 devtools::install_github("XLions/ggChinaFlag")
+```
+
+### Main function
+
+#### `plotCNFlag(type, item, ...)`
+
+Render a Chinese national or party flag.
+
+- `type`: Flag category. Use `typeFlag()` to see available options.
+- `item`: Specific flag name under the given type. Use `itemType(type)` to see available options.
+
+```r
+# Plot the national flag of the People's Republic of China
+plotCNFlag(type = "nation", item = "PRChina")
 ```
 
 ---
