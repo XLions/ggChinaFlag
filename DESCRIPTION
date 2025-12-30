@@ -1,0 +1,31 @@
+Package: ggChinaFlag
+Type: Package
+Title: Drawing Chinese National and Historical Flags with ggplot2
+Version: 0.1.0
+Authors@R:
+    person("Zhaoshuo", "Liu",
+           email = "lzs19970811@outlook.com",
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0009-0007-3615-5724"))
+Description:
+    This package provides programmatic implementations for drawing
+    Chinese national and historical flags using analytic geometry and
+    ggplot2-based vector graphics. Flag designs are constructed
+    entirely from geometric primitives such as polygons and rectangles,
+    without relying on external image files. The package is intended
+    for educational demonstration, reproducible visualization, and
+    procedural graphics in R.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports:
+    ggplot2,
+    dplyr,
+    tidyr,
+    tibble,
+    purrr,
+    sysfonts,
+    showtext,
+    showtextdb,
+    ggforce
+RoxygenNote: 7.3.2
