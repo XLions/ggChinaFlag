@@ -907,8 +907,8 @@ plot_Han18Star<-function(label=T){
   }
   PointStar<-PointStar[!is.na(PointStar$X),]
   p_Star<-list(
-    geom_path(data=PointStar,aes(x=X,y=Y)),
-    geom_polygon(data=PointStar,aes(x=X,y=Y),fill='black')
+    ggplot2::geom_path(data=PointStar,ggplot2::aes(x=X,y=Y)),
+    ggplot2::geom_polygon(data=PointStar,ggplot2::aes(x=X,y=Y),fill='black')
   )
 
   #外圈的黄圆
