@@ -1,10 +1,10 @@
 Package: ggChinaFlag
 Type: Package
 Title: Drawing Chinese National and Historical Flags with ggplot2
-Version: 0.1.2
+Version: 0.2.0
 Authors@R:
     person("Zhaoshuo", "Liu",
-           email = "lzs19970811@outlook.com",
+           email = "liuzhaoshuo1997@outlook.com",
            role = c("aut", "cre"),
            comment = c(ORCID = "0009-0007-3615-5724"))
 Description:
@@ -17,15 +17,12 @@ Description:
     procedural graphics in R.
 License: GPL-3
 Encoding: UTF-8
-LazyData: true
+LazyData: false
 Imports:
     ggplot2,
     dplyr,
-    tidyr,
-    tibble,
-    purrr,
-    sysfonts,
     showtext,
-    showtextdb,
     ggforce
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
+URL: https://github.com/你的用户名/ggChinaFlag
+BugReports: https://github.com/你的用户名/ggChinaFlag/issues

@@ -51,19 +51,19 @@ plot_P.R.CHINA_flag<-function(label=T){
   # 图像几何绘制方法参考 B 站视频：BV1Ni4y1978g
   # 本脚本通过纯几何计算 + ggplot2 绘制标准五星红旗
   # ------------------------------------------------------------
-  # ------------------------------------------------------------
-  # 自动检查 / 安装 / 加载所需 R 包
-  # ------------------------------------------------------------
-  packages <- c(
-    "tidyverse",
-    "sysfonts",
-    "showtextdb",
-    "showtext"
-  )
-
-  for (pkg in packages) {
-    library(pkg, character.only = TRUE)
-  }
+  # # ------------------------------------------------------------
+  # # 自动检查 / 安装 / 加载所需 R 包
+  # # ------------------------------------------------------------
+  # packages <- c(
+  #   "tidyverse",
+  #   "sysfonts",
+  #   "showtextdb",
+  #   "showtext"
+  # )
+  #
+  # for (pkg in packages) {
+  #   library(pkg, character.only = TRUE)
+  # }
   # ------------------------------------------------------------
   # 标题和坐标轴标签
   # ------------------------------------------------------------
@@ -219,33 +219,34 @@ plot_P.R.CHINA_flag<-function(label=T){
   # ------------------------------------------------------------
   # ggplot 绘图
   # ------------------------------------------------------------
-  ggplot()+
-    geom_polygon(data = rectangle,aes(x=x,y=y),color="#ee1c25",
+  ggplot2::ggplot()+
+    ggplot2::geom_polygon(data = rectangle,ggplot2::aes(x=x,y=y),color="#ee1c25",
                  fill="#ee1c25")+
-    geom_polygon(data = star0,aes(x=star0_x,y=star0_y),color="#ffff00",
+    ggplot2::geom_polygon(data = star0,ggplot2::aes(x=star0_x,y=star0_y),color="#ffff00",
                  fill="#ffff00")+
-    geom_polygon(data = star1,aes(x=star1_x,y=star1_y),color="#ffff00",
+    ggplot2::geom_polygon(data = star1,ggplot2::aes(x=star1_x,y=star1_y),color="#ffff00",
                  fill="#ffff00")+
-    geom_polygon(data = star2,aes(x=star2_x,y=star2_y),color="#ffff00",
+    ggplot2::geom_polygon(data = star2,ggplot2::aes(x=star2_x,y=star2_y),color="#ffff00",
                  fill="#ffff00")+
-    geom_polygon(data = star3,aes(x=star3_x,y=star3_y),color="#ffff00",
+    ggplot2::geom_polygon(data = star3,ggplot2::aes(x=star3_x,y=star3_y),color="#ffff00",
                  fill="#ffff00")+#绘图星星
-    geom_polygon(data = star4,aes(x=star4_x,y=star4_y),color="#ffff00",
+    ggplot2::geom_polygon(data = star4,ggplot2::aes(x=star4_x,y=star4_y),color="#ffff00",
                  fill="#ffff00")+#绘图红旗
-    coord_quickmap()+#调整为1：1比例显示
-    theme(legend.key = element_blank(),
-          panel.grid.major=element_line(colour=NA),
-          panel.background = element_rect(fill = "transparent",colour = NA),
-          plot.background = element_rect(fill = "transparent",colour = NA),
-          panel.grid.minor = element_blank(),
-          axis.text = element_blank(),
-          axis.ticks = element_blank(),
-          panel.grid  = element_blank())+#隐藏坐标系
-    labs(x=labels$x,
+    ggplot2::coord_quickmap()+#调整为1：1比例显示
+    ggplot2::theme(legend.key = ggplot2::element_blank(),
+          panel.grid.major=ggplot2::element_line(colour=NA),
+          panel.background = ggplot2::element_rect(fill = "transparent",colour = NA),
+          plot.background = ggplot2::element_rect(fill = "transparent",colour = NA),
+          panel.grid.minor = ggplot2::element_blank(),
+          axis.text = ggplot2::element_blank(),
+          axis.ticks = ggplot2::element_blank(),
+          panel.grid  = ggplot2::element_blank())+#隐藏坐标系
+    ggplot2::labs(x=labels$x,
          y=labels$y,
          title=labels$title)+
-    showtext_auto()#显示中文文本
+    showtext::showtext_auto()#显示中文文本
 }
+
 
 
 #' 绘制北洋政府时期五族共和旗（横五色旗）
@@ -299,19 +300,19 @@ plot_P.R.CHINA_flag<-function(label=T){
 #'
 #' @export
 plot_ROC_Beiyang_flag<-function(label=T){
-  # ------------------------------------------------------------
-  # 自动检查 / 安装 / 加载所需 R 包
-  # ------------------------------------------------------------
-  packages <- c(
-    "tidyverse",
-    "sysfonts",
-    "showtextdb",
-    "showtext"
-  )
-
-  for (pkg in packages) {
-    library(pkg, character.only = TRUE)
-  }
+  # # ------------------------------------------------------------
+  # # 自动检查 / 安装 / 加载所需 R 包
+  # # ------------------------------------------------------------
+  # packages <- c(
+  #   "tidyverse",
+  #   "sysfonts",
+  #   "showtextdb",
+  #   "showtext"
+  # )
+  #
+  # for (pkg in packages) {
+  #   library(pkg, character.only = TRUE)
+  # }
   # ------------------------------------------------------------
   # 标题和坐标轴标签
   # ------------------------------------------------------------
@@ -338,25 +339,25 @@ plot_ROC_Beiyang_flag<-function(label=T){
   # ------------------------------------------------------------
   # ggplot 绘图
   # ------------------------------------------------------------
-  ggplot()+
-    geom_rect(data = rect_data,
-              mapping = aes(xmin=xmin,xmax=xmax,ymin=ymin,ymax=ymax,
+  ggplot2::ggplot()+
+    ggplot2::geom_rect(data = rect_data,
+              mapping = ggplot2::aes(xmin=xmin,xmax=xmax,ymin=ymin,ymax=ymax,
                             fill=order))+
-    scale_fill_manual(values=rect_data$color)+
-    coord_quickmap()+#调整为1：1比例显示
-    theme(legend.key = element_blank(),
-          panel.grid.major=element_line(colour=NA),
-          panel.background = element_rect(fill = "transparent",colour = NA),
-          plot.background = element_rect(fill = "transparent",colour = NA),
-          panel.grid.minor = element_blank(),
-          axis.text = element_blank(),
-          axis.ticks = element_blank(),
+    ggplot2::scale_fill_manual(values=rect_data$color)+
+    ggplot2::coord_quickmap()+#调整为1：1比例显示
+    ggplot2::theme(legend.key = ggplot2::element_blank(),
+          panel.grid.major=ggplot2::element_line(colour=NA),
+          panel.background = ggplot2::element_rect(fill = "transparent",colour = NA),
+          plot.background = ggplot2::element_rect(fill = "transparent",colour = NA),
+          panel.grid.minor = ggplot2::element_blank(),
+          axis.text = ggplot2::element_blank(),
+          axis.ticks = ggplot2::element_blank(),
           legend.position = 'none',
-          panel.grid  = element_blank())+#隐藏坐标系
-    labs(x=labels$x,
+          panel.grid  = ggplot2::element_blank())+#隐藏坐标系
+    ggplot2::labs(x=labels$x,
          y=labels$y,
          title=labels$title)+
-    showtext_auto()#显示中文文本
+    showtext::showtext_auto()#显示中文文本
 }
 
 
@@ -429,20 +430,20 @@ plot_ROC_KMT_flag<-function(label=T){
   # https://commons.wikimedia.org/wiki/File:Flag_of_the_Republic_of_China_construction_sheet.svg
   # ------------------------------------------------------------
 
-  # ------------------------------------------------------------
-  # 自动检查 / 安装 / 加载所需 R 包
-  # ------------------------------------------------------------
-  packages <- c(
-    "tidyverse",
-    "sysfonts",
-    "showtextdb",
-    "showtext",
-    "ggforce"
-  )
-
-  for (pkg in packages) {
-    library(pkg, character.only = TRUE)
-  }
+  # # ------------------------------------------------------------
+  # # 自动检查 / 安装 / 加载所需 R 包
+  # # ------------------------------------------------------------
+  # packages <- c(
+  #   "tidyverse",
+  #   "sysfonts",
+  #   "showtextdb",
+  #   "showtext",
+  #   "ggforce"
+  # )
+  #
+  # for (pkg in packages) {
+  #   library(pkg, character.only = TRUE)
+  # }
   # ------------------------------------------------------------
   # 标题和坐标轴标签
   # ------------------------------------------------------------
@@ -513,29 +514,469 @@ plot_ROC_KMT_flag<-function(label=T){
   # ------------------------------------------------------------
   # ggplot 绘图
   # ------------------------------------------------------------
-  ggplot()+
-    geom_rect(data = rect_bg_red,
-              mapping = aes(xmin=xmin,xmax=xmax,ymin=ymin,ymax=ymax),fill='#DE0000')+
-    geom_rect(data = rect_bg_blue,
-              mapping = aes(xmin=xmin,xmax=xmax,ymin=ymin,ymax=ymax),fill='#0000AA')+
-    geom_polygon(data = star12_df,aes(x=x,y=y),color="white",
+  ggplot2::ggplot()+
+    ggplot2::geom_rect(data = rect_bg_red,
+              mapping = ggplot2::aes(xmin=xmin,xmax=xmax,ymin=ymin,ymax=ymax),fill='#DE0000')+
+    ggplot2::geom_rect(data = rect_bg_blue,
+              mapping = ggplot2::aes(xmin=xmin,xmax=xmax,ymin=ymin,ymax=ymax),fill='#0000AA')+
+    ggplot2::geom_polygon(data = star12_df,ggplot2::aes(x=x,y=y),color="white",
                  fill="white")+
-    geom_circle(aes(x0=12, y0=24, r=3*(1+1/15)), fill='#0000AA')+
-    geom_circle(aes(x0=12, y0=24, r=3), fill='white')+
+    ggforce::geom_circle(ggplot2::aes(x0=12, y0=24, r=3*(1+1/15)), fill='#0000AA')+
+    ggforce::geom_circle(ggplot2::aes(x0=12, y0=24, r=3), fill='white')+
     coord_quickmap()+#调整为1：1比例显示
-    theme(legend.key = element_blank(),
-          panel.grid.major=element_line(colour=NA),
-          panel.background = element_rect(fill = "transparent",colour = NA),
-          plot.background = element_rect(fill = "transparent",colour = NA),
-          panel.grid.minor = element_blank(),
-          axis.text = element_blank(),
-          axis.ticks = element_blank(),
+    theme(legend.key = ggplot2::element_blank(),
+          panel.grid.major=ggplot2::element_line(colour=NA),
+          panel.background = ggplot2::element_rect(fill = "transparent",colour = NA),
+          plot.background = ggplot2::element_rect(fill = "transparent",colour = NA),
+          panel.grid.minor = ggplot2::element_blank(),
+          axis.text = ggplot2::element_blank(),
+          axis.ticks = ggplot2::element_blank(),
           legend.position = 'none',
-          panel.grid  = element_blank())+#隐藏坐标系
-    labs(x=labels$x,
+          panel.grid  = ggplot2::element_blank())+#隐藏坐标系
+    ggplot2::labs(x=labels$x,
          y=labels$y,
          title=labels$title)+
-    showtext_auto()#显示中文文本
+    showtext::showtext_auto()#显示中文文本
 }
+
+
+
+
+#' 绘制铁血十八星旗（九角十八星旗）
+#'
+#' 使用解析几何与 \code{ggplot2} / \code{ggforce} 程序化绘制
+#' 辛亥革命武昌起义后湖北军政府所使用的“铁血十八星旗”，
+#' 又称九角十八星旗。旗面由红色底旗、中心黑色九角星以及
+#' 环绕星内外各九个黄色圆点构成，分别象征当时汉族十八行省。
+#'
+#' 九角星的顶点与内凹点通过几何构造方法精确计算，
+#' 外圈九个黄点沿星角外缘均匀分布，内圈九个黄点位于星内
+#' 外接圆半径的中间位置。全部图形由向量计算生成，
+#' 不依赖任何外部图像文件。
+#'
+#' 旗帜的构造细节参考了“19111010”网站（见参考文献）。
+#'
+#' @param label logical，是否显示标题与说明文字。
+#'   \describe{
+#'     \item{TRUE}{显示标题、设计者及历史背景文字（默认）}
+#'     \item{FALSE}{仅绘制旗帜本体，不显示任何文字}
+#'   }
+#'
+#' @return
+#' 返回一个 \code{ggplot} 对象，可直接打印或通过
+#' \code{ggsave()} 导出为矢量或位图文件。
+#'
+#' @details
+#' \itemize{
+#'   \item 旗帜高宽比为 5:8，坐标系 x 范围为 [-80, 80]，y 范围为 [-50, 50]
+#'   \item 九角星外接圆半径为 44 单位，内部小圆半径为 8 单位
+#'   \item 外圈九个黄点置于星角外沿，内圈九个黄点置于圆心与星角连线的中间位置
+#'   \item 使用 \code{coord_fixed(ratio = 1)} 保证显示比例不变形
+#'   \item 坐标轴、网格及图例默认隐藏
+#' }
+#'
+#' @examples
+#' \dontrun{
+#' # 绘制带文字说明的铁血十八星旗
+#' plot_Han18Star()
+#' }
+#'
+#' \dontrun{
+#' # 仅绘制旗帜本体（适合导出图片）
+#' plot_Han18Star(label = FALSE)
+#' }
+#'
+#' @seealso
+#' \code{\link[ggplot2]{geom_polygon}},
+#' \code{\link[ggforce]{geom_circle}},
+#' \code{\link{plot_P.R.CHINA_flag}},
+#' \code{\link{plot_ROC_Beiyang_flag}},
+#' \code{\link{plot_ROC_KMT_flag}}
+#'
+#' @author
+#' 旗帜设计：中国革命同盟会；
+#'
+#' @references
+#' \url{https://www.19111010.com.tw/story?id=93}
+#'
+#' @export
+plot_Han18Star<-function(label=T){
+
+  #参考链接：https://www.19111010.com.tw/story?id=93
+  #设置旗子长160个单位，宽100个单位
+
+
+  # ------------------------------------------------------------
+  # 必要函数
+  # ------------------------------------------------------------
+  # 根据圆心和圆上两点计算对应圆心夹角度数的函数
+  getAngle_byABO_circle<-
+    function(O,#圆心坐标x,y
+             A,#圆上一点坐标x,y
+             B,#圆上另一点坐标x,y
+             size, #large是优弧对应角，small是劣弧对应角
+             r#圆半径
+    ){
+
+      # 检验AB点是否在圆上
+      if(round(abs(sqrt((A[2]-O[2])^2+(A[1]-O[1])^2)),5)!=round(r,5)){
+        message('A point is NOT on the cycle!')
+        return(NA)
+      }
+      if(round(abs(sqrt((B[2]-O[2])^2+(B[1]-O[1])^2)),5)!=round(r,5)){
+        message('B point is NOT on the cycle!')
+        return(NA)
+      }
+
+      # 计算AB点弦长
+      distance_AB<-
+        abs(sqrt((B[2]-A[2])^2+(B[1]-A[1])^2))
+      # 计算劣弧对应角度
+      angle_small<-asin((distance_AB/2)/r)*2
+      # 基于劣弧结果计算优弧对应结果
+      angle_large<-2*pi-asin((distance_AB/2)/r)*2
+      #输出
+      if(size=='large'){
+        return(angle_large)
+      }else if(size=='small'){
+        return(angle_small)
+      }else{
+        message('Input of Size is not correct.')
+        return(NA)
+      }
+    }
+  # 圆弧与直线交点坐标
+  ## 以A点(xp,yp)为圆心，B点(x1,y1)为圆弧起点画圆，与直线CD：C(x2,y2),
+  ## D(x3,y3)交与E点(x4,y4)和F(x5,y5)。side为X轴方向上靠左还是靠右。
+  getPointCrossLineAndCircle<-
+    function(xp,yp,x1,y1,x2,y2,x3,y3,side){
+      #开始求圆弧和直线交点
+      k=((y2-y3)/(x2-x3))#计算CD斜率
+      if(!is.infinite(k)){
+        b=y2-(k*x2)#计算CD截距
+        r=((x1-xp)^2+(y1-yp)^2)^0.5#计算圆弧对应完整圆的半径
+        a=k^2+1
+        b2=2*(b*k-k*yp-xp)
+        c=xp^2+(b-yp)^2-r^2#标准一元二次方程求根
+        delta=b2^2-4*a*c#验证是否有实根
+        x4=(b2*(-1)+((delta)^0.5))/(2*a)
+        x5=(b2*(-1)-((delta)^0.5))/(2*a)
+        y4=k*x4+b
+        y5=k*x5+b#求交点坐标
+        x_left<-min(c(x4,x5))
+        x_right<-max(c(x4,x5))
+        if(side=='left'){
+          return(c(x_left,k*x_left+b))
+        }else if(side=='right'){
+          return(c(x_right,k*x_right+b))
+        }
+      }else if(is.infinite(k)){
+        #斜率无限大/无限小，即垂直线与圆交点，此时x2==x3
+        if(x2!=x3){
+          message('k is infinite but x2 is not equal as x3')
+          return(NA)
+        }else{
+          r=sqrt((xp-x1)^2+(yp-y1)^2)
+          x_get=unique(c(x2,x3))
+          y1_get<-yp+sqrt(r^2-(x2-xp)^2)
+          y2_get<-yp-sqrt(r^2-(x2-xp)^2)
+          if(side=='top'){
+            return(c(x_get,max(y1_get,y2_get)))
+          }else if(side=='bottom'){
+            return(c(x_get,min(y1_get,y2_get)))
+          }
+        }
+      }
+
+    }
+  # 计算两点之间距离
+  dis2points<-function(p1,p2){
+    return(
+      sqrt((p1[1]-p2[1])^2+(p1[2]-p2[2])^2)
+    )
+  }
+  # 计算直线 AB 与直线 CD 的交点
+  getLineIntersection <- function(A, B, C, D, tol = 1e-10) {
+    # A, B, C, D 均为长度为 2 的向量 c(x, y)
+    x1 <- A[1]; y1 <- A[2]
+    x2 <- B[1]; y2 <- B[2]
+    x3 <- C[1]; y3 <- C[2]
+    x4 <- D[1]; y4 <- D[2]
+    # 行列式
+    denom <- (x1 - x2) * (y3 - y4) -
+      (y1 - y2) * (x3 - x4)
+    # 平行或重合
+    if (abs(denom) < tol) {
+      return(list(
+        intersect = FALSE,
+        type = "parallel_or_collinear",
+        point = NULL
+      ))
+    }
+    # 交点坐标
+    px <- ((x1*y2 - y1*x2) * (x3 - x4) -
+             (x1 - x2) * (x3*y4 - y3*x4)) / denom
+
+    py <- ((x1*y2 - y1*x2) * (y3 - y4) -
+             (y1 - y2) * (x3*y4 - y3*x4)) / denom
+    return(list(
+      intersect = TRUE,
+      type = "unique",
+      point = c(px, py)
+    ))
+  }
+  # 求两圆交点中靠左或靠右的点
+  circle_intersection <- function(x1, y1, r1, x2, y2, r2, side = c("left", "right")) {
+    side <- match.arg(side)
+
+    # 圆心距
+    dx <- x2 - x1
+    dy <- y2 - y1
+    d <- sqrt(dx^2 + dy^2)
+
+    # 容差
+    eps <- .Machine$double.eps^0.5
+
+    # 无交点或无穷多交点的情况
+    if (d > r1 + r2 + eps || d < abs(r1 - r2) - eps || (d < eps && abs(r1 - r2) < eps)) {
+      return(c(NA_real_, NA_real_))
+    }
+
+    # 从圆心A沿AB方向到弦垂足的距离
+    a <- (r1^2 - r2^2 + d^2) / (2 * d)
+    # 垂足到交点的距离（半弦长）
+    h2 <- r1^2 - a^2
+    h <- if (h2 < 0) 0 else sqrt(h2)   # 处理相切或极小数值误差
+
+    # 垂足坐标
+    x0 <- x1 + a * dx / d
+    y0 <- y1 + a * dy / d
+
+    # 垂直于AB的单位向量（两个方向）
+    # 注意：dx, dy 可能为0，但d>0时除法安全
+    vx <- -dy / d
+    vy <-  dx / d
+
+    # 两个交点
+    p1 <- c(x0 - h * vx, y0 - h * vy)
+    p2 <- c(x0 + h * vx, y0 + h * vy)
+
+    # 根据 side 选择
+    if (side == "left") {
+      # x 较小者；若相等则返回第一个（即 p1 和 p2 中x坐标较小的那一个）
+      if (p1[1] <= p2[1]) p1 else p2
+    } else { # "right"
+      if (p1[1] > p2[1]) p1 else p2
+    }
+  }
+
+  #背景
+  p_bg<-
+    ggplot2::ggplot()+
+    ggplot2::geom_rect(mapping = ggplot2::aes(xmin=-80,xmax=80,ymin=-50,ymax=50),
+                       fill='red')+
+    ggplot2::coord_fixed(ratio = 1)
+
+  #黑正九角星
+  ##建立点坐标
+  PointDF<-data.frame(
+    ID=NA,
+    X=NA,Y=NA
+  )
+  ##开始按照说明计算点坐标
+  ##辅助点坐标数据框
+  PointDF<-rbind(PointDF,
+                 data.frame(
+                   ID='O',X=0,Y=0
+                 ))
+  ##从数据框中调出坐标的函数
+  getPointLoc<-function(ID){
+    return(
+      list(
+        X=PointDF$X[which(PointDF$ID==ID)],
+        Y=PointDF$Y[which(PointDF$ID==ID)]
+      )
+    )
+  }
+  #1.取大小
+  rO_Small=8;rO_Big=44
+  #2.定两点
+  PointDF<-rbind(PointDF,
+                 data.frame(
+                   ID=c('G','D','A1','A'),
+                   X=c((-rO_Big*sqrt(3)/2),rO_Big*sqrt(3)/2,0,0),
+                   Y=c(rep(-rO_Big/2,2),-rO_Big,rO_Big)
+                 ))#G、D点的坐标一眼就可以看出
+  PointDF<-rbind(PointDF,
+                 data.frame(
+                   ID=c('B1','C1'),
+                   X=c(-rO_Big/2,rO_Big/2),
+                   Y=c(rep(rO_Big*sqrt(3)/2,2))
+                 ))#B1 C1点的坐标一眼就可以看出
+  PointDF<-rbind(PointDF,
+                 data.frame(
+                   ID=c('D1'),
+                   X=c(0),
+                   Y=c(-rO_Big/3)
+                 ))#D1点的坐标简单计算可以知道
+  PointDF<-rbind(PointDF,
+                 data.frame(
+                   ID=c('F'),
+                   X=getPointCrossLineAndCircle(
+                     0,0,#O
+                     0,-rO_Big,#A1
+                     0,-rO_Big/3,#D1
+                     0+1,-rO_Big/3+sqrt(3),#子线斜率为3，过D点
+                     'left'
+                   )[1],
+                   Y=getPointCrossLineAndCircle(
+                     0,0,#O
+                     0,-rO_Big,#A1
+                     0,-rO_Big/3,#D1
+                     0+1,-rO_Big/3+sqrt(3),#子线斜率为根3，过D点
+                     'left'
+                   )[2]
+                 ))#F
+  PointDF<-rbind(PointDF,
+                 data.frame(
+                   ID=c('E'),
+                   X=getPointCrossLineAndCircle(
+                     0,0,#O
+                     0,-rO_Big,#A1
+                     0,-rO_Big/3,#D1
+                     0+1,-rO_Big/3-sqrt(3),#子线斜率为3，过D1点
+                     'right'
+                   )[1],
+                   Y=getPointCrossLineAndCircle(
+                     0,0,#O
+                     0,-rO_Big,#A1
+                     0,-rO_Big/3,#D1
+                     0+1,-rO_Big/3-sqrt(3),#丑线斜率为负根3，过D1点
+                     'right'
+                   )[2]
+                 ))#E
+  #3.移中心
+  PointDF<-rbind(PointDF,
+                 data.frame(
+                   ID=c('E1'),
+                   X=0,
+                   Y=getPointLoc('E')$Y
+                 ))#E1
+  PointDF<-rbind(PointDF,
+                 data.frame(
+                   ID=c('F1'),
+                   X=0,
+                   Y=mean(c(getPointLoc('E')$Y,getPointLoc('A')$Y))
+                 ))#F1
+  PointDF$Y<-PointDF$Y-getPointLoc('F1')$Y
+  PointDF<-PointDF[which(PointDF$ID %in% c('O','A','G','F','E','D')),]
+  #4.连九星
+  PointDF<-rbind(PointDF,
+                 data.frame(
+                   ID=c('E1','F1'),
+                   X=c((2*getPointLoc('O')$X-getPointLoc('E')$X),
+                       (2*getPointLoc('O')$X-getPointLoc('F')$X)),
+                   Y=c((2*getPointLoc('O')$Y-getPointLoc('E')$Y),
+                       (2*getPointLoc('O')$Y-getPointLoc('F')$Y))
+                 ))
+  H_loc<-circle_intersection(getPointLoc('O')$X,getPointLoc('O')$Y,rO_Big,
+                             getPointLoc('E1')$X,getPointLoc('E1')$Y,rO_Big,'left')
+  B_loc<-circle_intersection(getPointLoc('O')$X,getPointLoc('O')$Y,rO_Big,
+                             getPointLoc('E1')$X,getPointLoc('E1')$Y,rO_Big,'right')
+  I_loc<-circle_intersection(getPointLoc('O')$X,getPointLoc('O')$Y,rO_Big,
+                             getPointLoc('F1')$X,getPointLoc('F1')$Y,rO_Big,'left')
+  C_loc<-circle_intersection(getPointLoc('O')$X,getPointLoc('O')$Y,rO_Big,
+                             getPointLoc('F1')$X,getPointLoc('F1')$Y,rO_Big,'right')
+  PointDF<-rbind(PointDF,
+                 data.frame(
+                   ID=c('H','B','I','C'),
+                   X=c(H_loc[1],B_loc[1],I_loc[1],C_loc[1]),
+                   Y=c(H_loc[2],B_loc[2],I_loc[2],C_loc[2])
+                 ))
+  PointStar<-data.frame(
+    ID=NA,X=NA,Y=NA
+  )
+  for(id in c('A','F','B','G','C','H','D','I','E','A')){
+    PointStar<-
+      rbind(PointStar,
+            data.frame(
+              ID=id,
+              X=getPointLoc(id)$X,
+              Y=getPointLoc(id)$Y
+            ))
+  }
+  PointStar<-PointStar[!is.na(PointStar$X),]
+  p_Star<-list(
+    geom_path(data=PointStar,aes(x=X,y=Y)),
+    geom_polygon(data=PointStar,aes(x=X,y=Y),fill='black')
+  )
+
+  #外圈的黄圆
+  p_Circle_Out<-list(
+    ggforce::geom_circle(data=PointStar,
+                         ggplot2::aes(x0=X,y0=Y,r=rO_Small/2),
+                         fill = "yellow", color=NA)
+  )
+
+  #内圈黄圆
+  CircleInside<-data.frame(
+    ID=1,X=0,Y=1.5*rO_Small
+  )
+  for(i in 2:nrow(dplyr::distinct(PointStar))){
+    CircleInside<-
+      rbind(CircleInside,
+            data.frame(
+              ID=i,
+              X=getPointCrossLineAndCircle(xp=getPointLoc('O')$X,yp=getPointLoc('O')$Y,
+                                           x1=getPointLoc('O')$X+1.5*rO_Small,y1=getPointLoc('O')$Y,
+                                           x2=getPointLoc('O')$X,y2=getPointLoc('O')$Y,
+                                           x3=dplyr::distinct(PointStar)$X[i],y3=dplyr::distinct(PointStar)$Y[i],
+                                           side=ifelse(dplyr::distinct(PointStar)$X[i]<=0,'left','right'))[1],
+              Y=getPointCrossLineAndCircle(xp=getPointLoc('O')$X,yp=getPointLoc('O')$Y,
+                                           x1=getPointLoc('O')$X+1.5*rO_Small,y1=getPointLoc('O')$Y,
+                                           x2=getPointLoc('O')$X,y2=getPointLoc('O')$Y,
+                                           x3=dplyr::distinct(PointStar)$X[i],y3=dplyr::distinct(PointStar)$Y[i],
+                                           side=ifelse(dplyr::distinct(PointStar)$X[i]<=0,'left','right'))[2]
+            ))
+  }
+  p_Circle_Inside<-list(
+    ggforce::geom_circle(data=CircleInside,
+                         ggplot2::aes(x0=X,y0=Y,r=rO_Small/2),
+                         fill = "yellow", color=NA)
+  )
+
+  if(label==T){
+    labels<-list(x='铁血十八星旗',
+                 y='设计：中国革命同盟会',
+                 title='武昌起义 — 中华民国湖北军政府')
+  }else{
+    labels<-list(x='',
+                 y='',
+                 title='')
+  }
+
+  return(
+    p_bg+
+      p_Star+
+      p_Circle_Out+p_Circle_Inside+
+      ggplot2::labs(
+        x=labels$x,y=labels$y,title=labels$title
+      )+
+      ggplot2::scale_y_continuous(limits = c(-50,50))+
+      ggplot2::scale_x_continuous(limits = c(-80,80))+
+      ggplot2::theme(legend.key = ggplot2::element_blank(),
+                     panel.grid.major=ggplot2::element_line(colour=NA),
+                     panel.background = ggplot2::element_rect(fill = "transparent",colour = NA),
+                     plot.background = ggplot2::element_rect(fill = "transparent",colour = NA),
+                     panel.grid.minor = ggplot2::element_blank(),
+                     axis.text = ggplot2::element_blank(),
+                     axis.ticks = ggplot2::element_blank(),
+                     legend.position = 'none',
+                     plot.title = ggplot2::element_text(face = 'bold',hjust=0.5),
+                     panel.grid  = ggplot2::element_blank())+
+      showtext::showtext_auto()
+  )
+}
+
 
 

@@ -2,25 +2,56 @@
 % Please edit documentation in R/flag_interface.R
 \name{plotCNFlag}
 \alias{plotCNFlag}
-\title{Plot a Chinese national or party flag}
+\title{根据输入的中英文名称绘制中国历史或政治旗帜}
 \usage{
-plotCNFlag(type, item, ...)
+plotCNFlag(input, label = TRUE)
 }
 \arguments{
-\item{type}{Flag category. Available options can be queried via typeFlag().}
+\item{input}{字符串，指定要绘制的旗帜名称。可以是中文或英文，
+例如 `"中华人民共和国国旗"`、`"中华民国青天白日旗"`、
+`"Flag of the Communist Party of China"` 等。具体支持名称见
+\code{\link{FlatStorge}}。}
 
-\item{item}{Specific flag name under the given type.}
-
-\item{...}{Additional parameters passed to the underlying plotting function.}
+\item{label}{逻辑值，是否显示标题与文字标注。默认为 \code{TRUE}。}
 }
 \value{
-A ggplot object.
+一个 \code{ggplot} 对象，可直接打印或通过
+  \code{ggsave()} 保存。
 }
 \description{
-This is the unified interface for plotting flags in ggChinaFlag.
+此函数提供一个统一接口，根据输入的旗帜或党旗名称（支持中文或英文）
+自动调用对应的底层绘图函数，返回一个 `ggplot` 对象。
+}
+\details{
+函数内部通过 \code{\link{FlatStorge}} 获取内置的中英文名称列表，
+自动检测输入语言并进行匹配，然后转发至以下绘图函数之一：
+\itemize{
+  \item \code{\link{plot_P.R.CHINA_flag}}
+  \item \code{\link{plot_ROC_KMT_flag}}
+  \item \code{\link{plot_ROC_Beiyang_flag}}
+  \item \code{\link{plot_Han18Star}}
+  \item \code{\link{plot_CCP}}
+  \item \code{\link{plot_KMT}}
+}
+若输入名称无法识别，将抛出错误。
 }
 \examples{
 \dontrun{
-plotCNFlag(type = "nation", item = "PRC")
+# 绘制中华人民共和国国旗（带标题）
+plotCNFlag("中华人民共和国国旗")
+
+# 绘制中国国民党党旗（无文字）
+plotCNFlag("中国国民党党旗", label = FALSE)
+
+# 使用英文名称绘制五色旗
+plotCNFlag("Five-Color Flag of the Beiyang Government of the Republic of China")
+
+# 绘制武昌起义十八星旗
+plotCNFlag("Iron-Blood 18-Star Flag of the Wuchang Uprising")
 }
+
+}
+\seealso{
+\code{\link{FlatStorge}} 获取内置名称列表，
+\code{\link{plot_P.R.CHINA_flag}} 等底层绘图函数。
 }

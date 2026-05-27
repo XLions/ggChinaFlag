@@ -503,20 +503,20 @@ plot_KMT<-function(label=T){
   # https://commons.wikimedia.org/wiki/File:Flag_of_the_Republic_of_China_construction_sheet.svg
   # ------------------------------------------------------------
 
-  # ------------------------------------------------------------
-  # 自动检查 / 安装 / 加载所需 R 包
-  # ------------------------------------------------------------
-  packages <- c(
-    "tidyverse",
-    "sysfonts",
-    "showtextdb",
-    "showtext",
-    "ggforce"
-  )
-
-  for (pkg in packages) {
-    library(pkg, character.only = TRUE)
-  }
+  # # ------------------------------------------------------------
+  # # 自动检查 / 安装 / 加载所需 R 包
+  # # ------------------------------------------------------------
+  # packages <- c(
+  #   "tidyverse",
+  #   "sysfonts",
+  #   "showtextdb",
+  #   "showtext",
+  #   "ggforce"
+  # )
+  #
+  # for (pkg in packages) {
+  #   library(pkg, character.only = TRUE)
+  # }
   # ------------------------------------------------------------
   # 标题和坐标轴标签
   # ------------------------------------------------------------
@@ -586,27 +586,27 @@ plot_KMT<-function(label=T){
   # ------------------------------------------------------------
   # ggplot 绘图
   # ------------------------------------------------------------
-  ggplot()+
-    geom_rect(data = rect_bg_blue,
-              mapping = aes(xmin=xmin,xmax=xmax,ymin=ymin,ymax=ymax),fill='#0000AA')+
-    geom_polygon(data = star12_df,aes(x=x,y=y),color="white",
+  ggplot2::ggplot()+
+    ggplot2::geom_rect(data = rect_bg_blue,
+              mapping = ggplot2::aes(xmin=xmin,xmax=xmax,ymin=ymin,ymax=ymax),fill='#0000AA')+
+    ggplot2::geom_polygon(data = star12_df,ggplot2::aes(x=x,y=y),color="white",
                  fill="white")+
-    geom_circle(aes(x0=12, y0=24, r=3*(1+1/15)), fill='#0000AA',color='#0000AA')+
-    geom_circle(aes(x0=12, y0=24, r=3), fill='white',color='white')+
-    coord_quickmap()+#调整为1：1比例显示
-    scale_y_continuous(limits = c(16,32))+
-    scale_x_continuous(limits = c(0,24))+
-    theme(legend.key = element_blank(),
-          panel.grid.major=element_line(colour=NA),
-          panel.background = element_rect(fill = "transparent",colour = NA),
-          plot.background = element_rect(fill = "transparent",colour = NA),
-          panel.grid.minor = element_blank(),
-          axis.text = element_blank(),
-          axis.ticks = element_blank(),
+    ggforce::geom_circle(ggplot2::aes(x0=12, y0=24, r=3*(1+1/15)), fill='#0000AA',color='#0000AA')+
+    ggforce::geom_circle(ggplot2::aes(x0=12, y0=24, r=3), fill='white',color='white')+
+    ggplot2::coord_quickmap()+#调整为1：1比例显示
+    ggplot2::scale_y_continuous(limits = c(16,32))+
+    ggplot2::scale_x_continuous(limits = c(0,24))+
+    ggplot2::theme(legend.key = ggplot2::element_blank(),
+          panel.grid.major=ggplot2::element_line(colour=NA),
+          panel.background = ggplot2::element_rect(fill = "transparent",colour = NA),
+          plot.background = ggplot2::element_rect(fill = "transparent",colour = NA),
+          panel.grid.minor = ggplot2::element_blank(),
+          axis.text = ggplot2::element_blank(),
+          axis.ticks = ggplot2::element_blank(),
           legend.position = 'none',
-          panel.grid  = element_blank())+#隐藏坐标系
-    labs(x=labels$x,
+          panel.grid  = ggplot2::element_blank())+#隐藏坐标系
+    ggplot2::labs(x=labels$x,
          y=labels$y,
          title=labels$title)+
-    showtext_auto()#显示中文文本
+    showtext::showtext_auto()#显示中文文本
 }
