@@ -906,9 +906,31 @@ plot_Han18Star<-function(label=T){
             ))
   }
   PointStar<-PointStar[!is.na(PointStar$X),]
+  #windows版会出现geom_polygon导致的空白，因此要单独建立一个图层
+  Star_Cross<-data.frame(
+    Line1Point1=c('A','I','H','G','F','A','G','H','B'),
+    Line1Point2=c('F','E','D','C','B','E','C','C','G'),
+    Line2Point1=c('I','H','G','A','E','H','I','B','A'),
+    Line2Point2=c('D','C','B','F','I','D','D','F','E'),
+    X=NA,
+    Y=NA
+  )
+  for(i in 1:nrow(Star_Cross)){
+    Star_Cross_i<-
+    getLineIntersection(
+      A=c(getPointLoc(Star_Cross$Line1Point1[i])$X,getPointLoc(Star_Cross$Line1Point1[i])$Y),
+      B=c(getPointLoc(Star_Cross$Line1Point2[i])$X,getPointLoc(Star_Cross$Line1Point2[i])$Y),
+      C=c(getPointLoc(Star_Cross$Line2Point1[i])$X,getPointLoc(Star_Cross$Line2Point1[i])$Y),
+      D=c(getPointLoc(Star_Cross$Line2Point2[i])$X,getPointLoc(Star_Cross$Line2Point2[i])$Y),
+      tol = 1e-10
+    )
+    Star_Cross$X[i]<-Star_Cross_i$point[1]
+    Star_Cross$Y[i]<-Star_Cross_i$point[2]
+  }
   p_Star<-list(
-    geom_path(data=PointStar,aes(x=X,y=Y)),
-    geom_polygon(data=PointStar,aes(x=X,y=Y),fill='black')
+    ggplot2::geom_path(data=PointStar,ggplot2::aes(x=X,y=Y)),
+    ggplot2::geom_polygon(data=PointStar,ggplot2::aes(x=X,y=Y),fill='black'),
+    ggplot2::geom_polygon(data=Star_Cross,ggplot2::aes(x=X,y=Y),fill='black')
   )
 
   #外圈的黄圆
