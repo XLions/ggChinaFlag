@@ -18,11 +18,13 @@
 
 ## 📦 Usage | 使用方法
 
-### Install from GitHub 安装
+### Install  安装
 
 ```r
+install.packages("ggChinaFlag") # From CRAN
+
 # install.packages("devtools")
-devtools::install_github("XLions/ggChinaFlag")
+devtools::install_github("XLions/ggChinaFlag") # From GitHub
 ```
 
 ### Main function 主函数
