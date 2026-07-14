@@ -18,11 +18,13 @@
 
 ## 📦 Usage | 使用方法
 
-### Install from GitHub 安装
+### Install  安装
 
 ```r
+install.packages("ggChinaFlag") # From CRAN
+
 # install.packages("devtools")
-devtools::install_github("XLions/ggChinaFlag")
+devtools::install_github("XLions/ggChinaFlag") # From GitHub
 ```
 
 ### Main function 主函数
@@ -45,7 +47,7 @@ plotCNFlag("Iron-Blood 18-Star Flag of the Wuchang Uprising", label = FALSE)
 ### See available flag names 查看可用的旗帜名称
 
 ```r
-FlatStorge()                # 默认 lang = "English" （毕竟中文不知道什么时候可能会报错🤷）
+FlatStorge()                # 默认 lang = "Chinese" （毕竟中国旗帜）
 
 # 中文名称
 FlatStorge("Chinese")
@@ -60,13 +62,14 @@ FlatStorge("English")
 
 | 类别 | 中文名称 | English name |
 |------|----------|--------------|
-| 🇨🇳 国旗 | 中华人民共和国国旗 | Flag of the People's Republic of China |
+| 🇨🇳 国旗 | 中华人民共和国国旗 🇨🇳 | Flag of the People's Republic of China |
 |  | 中华民国青天白日旗 | Flag of the Republic of China (Blue Sky, White Sun, and Red Earth) |
 |  | 中华民国北洋政府五色旗 | Five-Color Flag of the Beiyang Government of the Republic of China |
 |  | 武昌起义铁血十八星旗 | Iron-Blood 18-Star Flag of the Wuchang Uprising |
 | 🚩 政党 | 中国共产党党旗 | Flag of the Communist Party of China |
 |  | 中国国民党党旗 | Flag of the Kuomintang (Blue Sky and White Sun flag) |
-
+| 🚩 区旗 | 香港特别行政区区旗 🇭🇰 | Regional Flag of the Hong Kong Special Administrative Region |
+|  | 澳门特别行政区区旗 🇲🇴 | Regional Flag of the Macao Special Administrative Region |
 ---
 
 ## 📖 Background | 历史背景
