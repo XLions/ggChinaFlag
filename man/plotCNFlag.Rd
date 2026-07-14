@@ -2,56 +2,47 @@
 % Please edit documentation in R/flag_interface.R
 \name{plotCNFlag}
 \alias{plotCNFlag}
-\title{根据输入的中英文名称绘制中国历史或政治旗帜}
+\title{Plot a Chinese national, historical, party, or regional flag by name}
 \usage{
 plotCNFlag(input, label = TRUE)
 }
 \arguments{
-\item{input}{字符串，指定要绘制的旗帜名称。可以是中文或英文，
-例如 `"中华人民共和国国旗"`、`"中华民国青天白日旗"`、
-`"Flag of the Communist Party of China"` 等。具体支持名称见
-\code{\link{FlatStorge}}。}
+\item{input}{Character string giving the flag to plot, either a Chinese or
+an English name; see \code{\link{FlagStorage}} for the supported names.}
 
-\item{label}{逻辑值，是否显示标题与文字标注。默认为 \code{TRUE}。}
+\item{label}{Logical; whether to display the title and text annotations.
+Default is \code{TRUE}.}
 }
 \value{
-一个 \code{ggplot} 对象，可直接打印或通过
-  \code{ggsave()} 保存。
+A \code{ggplot} object, which can be printed directly or saved with
+  \code{ggsave()}.
 }
 \description{
-此函数提供一个统一接口，根据输入的旗帜或党旗名称（支持中文或英文）
-自动调用对应的底层绘图函数，返回一个 `ggplot` 对象。
+A unified interface that dispatches to the appropriate low-level plotting
+function based on the supplied flag name (Chinese or English) and returns a
+\code{ggplot} object.
 }
 \details{
-函数内部通过 \code{\link{FlatStorge}} 获取内置的中英文名称列表，
-自动检测输入语言并进行匹配，然后转发至以下绘图函数之一：
-\itemize{
-  \item \code{\link{plot_P.R.CHINA_flag}}
-  \item \code{\link{plot_ROC_KMT_flag}}
-  \item \code{\link{plot_ROC_Beiyang_flag}}
-  \item \code{\link{plot_Han18Star}}
-  \item \code{\link{plot_CCP}}
-  \item \code{\link{plot_KMT}}
-}
-若输入名称无法识别，将抛出错误。
+The function obtains the built-in name list via \code{\link{FlagStorage}},
+detects the input language, matches the name, and forwards to one of
+\code{\link{plot_P.R.CHINA_flag}}, \code{\link{plot_ROC_KMT_flag}},
+\code{\link{plot_ROC_Beiyang_flag}}, \code{\link{plot_Han18Star}},
+\code{\link{plot_CCP}}, \code{\link{plot_KMT}},
+\code{\link{plot_HK_SAR_flag}} or \code{\link{plot_Macao_SAR_flag}}. An
+unrecognised name raises an error.
 }
 \examples{
-\dontrun{
-# 绘制中华人民共和国国旗（带标题）
-plotCNFlag("中华人民共和国国旗")
-
-# 绘制中国国民党党旗（无文字）
-plotCNFlag("中国国民党党旗", label = FALSE)
-
-# 使用英文名称绘制五色旗
+\donttest{
+plotCNFlag("Flag of the People's Republic of China")
+plotCNFlag("Flag of the Kuomintang (Blue Sky and White Sun flag)", label = FALSE)
 plotCNFlag("Five-Color Flag of the Beiyang Government of the Republic of China")
-
-# 绘制武昌起义十八星旗
 plotCNFlag("Iron-Blood 18-Star Flag of the Wuchang Uprising")
+plotCNFlag("Regional Flag of the Hong Kong Special Administrative Region")
+plotCNFlag("Regional Flag of the Macao Special Administrative Region", label = FALSE)
 }
 
 }
 \seealso{
-\code{\link{FlatStorge}} 获取内置名称列表，
-\code{\link{plot_P.R.CHINA_flag}} 等底层绘图函数。
+\code{\link{FlagStorage}} for the name list, and the underlying
+  plotting functions such as \code{\link{plot_P.R.CHINA_flag}}.
 }

@@ -1,76 +1,52 @@
-#' 绘制标准五星红旗（几何构造法）
+#' Plot the national flag of the People's Republic of China
 #'
-#' 使用纯几何计算与 \code{ggplot2} 绘制符合规范比例的中华人民共和国国旗。
-#' 五角星的形状与朝向通过解析几何方法精确计算，小星均指向大星中心，
-#' 不依赖外部图片或 SVG 资源，适合教学演示与程序化绘图。
+#' Draws the national flag of the People's Republic of China at the regulation
+#' proportions using pure geometric computation and \code{ggplot2}. The shape
+#' and orientation of the stars are computed analytically so that each small
+#' star points to the centre of the large star. No external image or SVG
+#' resources are used, which makes the function suitable for teaching and
+#' programmatic graphics.
 #'
-#' 本函数在运行时会自动检测并加载所需依赖包
-#'（\code{tidyverse}、\code{sysfonts}、\code{showtextdb}、\code{showtext}），
-#' 若未安装则会自动从 CRAN 安装。
+#' @param label Logical; whether to display the title and axis text. If
+#'   \code{TRUE} (default) the title, designer and reference information are
+#'   shown; if \code{FALSE} only the flag is drawn.
 #'
-#' 几何构造方法参考 B 站视频：BV1Ni4y1978g。
-#'
-#' @param label logical，是否显示标题与坐标轴文字。
-#'   \describe{
-#'     \item{TRUE}{显示标题、作者及参考信息（默认）}
-#'     \item{FALSE}{不显示任何文字，仅绘制图形}
-#'   }
-#'
-#' @return
-#' 返回一个 \code{ggplot} 对象，可直接打印或用于 \code{ggsave()} 保存。
+#' @return A \code{ggplot} object, which can be printed directly or saved with
+#'   \code{ggsave()}.
 #'
 #' @details
 #' \itemize{
-#'   \item 国旗比例为 3:2
-#'   \item 大五角星位于左上角
-#'   \item 四颗小五角星按规范位置分布，并旋转指向大星中心
-#'   \item 使用 \code{coord_quickmap()} 保证 x:y 比例为 1:1
+#'   \item The flag has a 3:2 aspect ratio.
+#'   \item The large star is placed in the upper-left canton.
+#'   \item The four small stars are positioned per the specification and
+#'     rotated to point at the large star.
+#'   \item \code{ggplot2::coord_quickmap()} keeps a 1:1 x:y ratio.
 #' }
 #'
 #' @examples
-#' \dontrun{
-#' # 基本用法
+#' \donttest{
 #' plot_P.R.CHINA_flag()
-#' }
-#'
-#' \dontrun{
-#' # 不显示任何文字，适合导出图片
 #' plot_P.R.CHINA_flag(label = FALSE)
 #' }
 #'
-#' @author
-#' 曾联松（国旗设计者）；
+#' @author Flag design: Zeng Liansong.
 #'
-#' @seealso
-#' \code{\link[ggplot2]{geom_polygon}},
-#' \code{\link[ggplot2]{coord_quickmap}}
+#' @seealso \code{\link[ggplot2]{geom_polygon}},
+#'   \code{\link[ggplot2]{coord_quickmap}}
 #'
 #' @export
-plot_P.R.CHINA_flag<-function(label=T){
+plot_P.R.CHINA_flag<-function(label=TRUE){
   # ------------------------------------------------------------
   # 图像几何绘制方法参考 B 站视频：BV1Ni4y1978g
   # 本脚本通过纯几何计算 + ggplot2 绘制标准五星红旗
   # ------------------------------------------------------------
-  # # ------------------------------------------------------------
-  # # 自动检查 / 安装 / 加载所需 R 包
-  # # ------------------------------------------------------------
-  # packages <- c(
-  #   "tidyverse",
-  #   "sysfonts",
-  #   "showtextdb",
-  #   "showtext"
-  # )
-  #
-  # for (pkg in packages) {
-  #   library(pkg, character.only = TRUE)
-  # }
   # ------------------------------------------------------------
   # 标题和坐标轴标签
   # ------------------------------------------------------------
-  if(label==T){
-    labels<-list(x='设计参考B站视频：BV1Ni4y1978g',
-                 y='设计者：曾联松',
-                 title='R语言绘制标准五星红旗')
+  if(label==TRUE){
+    labels<-list(x='\u8bbe\u8ba1\u53c2\u8003B\u7ad9\u89c6\u9891\uff1aBV1Ni4y1978g',  # 设计参考B站视频：BV1Ni4y1978g
+                 y='\u8bbe\u8ba1\u8005\uff1a\u66fe\u8054\u677e',  # 设计者：曾联松
+                 title='R\u8bed\u8a00\u7ed8\u5236\u6807\u51c6\u4e94\u661f\u7ea2\u65d7')  # R语言绘制标准五星红旗
   }else{
     labels<-list(x='',
                  y='',
@@ -249,77 +225,51 @@ plot_P.R.CHINA_flag<-function(label=T){
 
 
 
-#' 绘制北洋政府时期五族共和旗（横五色旗）
+#' Plot the Five-Colored Flag of the Beiyang Government
 #'
-#' 使用 \code{ggplot2} 以矩形色块方式绘制北洋政府时期
-#' （约 1912–1928 年）使用的“五族共和旗”，
-#' 又称横五色旗。旗面由红、黄、蓝、白、黑五条等宽横色带组成，
-#' 分别象征汉、满、蒙、回、藏五族。
+#' Draws the Five-Colored Flag used during the Beiyang Government period
+#' (circa 1912-1928) of the Republic of China, using horizontal colour bands
+#' rendered with \code{ggplot2}. The flag has five equal horizontal stripes in
+#' red, yellow, blue, white and black, symbolising the Han, Manchu, Mongol, Hui
+#' and Tibetan peoples. The drawing is fully programmatic and uses no external
+#' image resources.
 #'
-#' 本函数采用程序化绘图方式，不依赖任何外部图像资源，
-#' 适合教学演示、历史图形复现以及向量化图形输出。
-#' 函数运行时会自动检测并加载所需依赖包，
-#' 若缺失则从 CRAN 自动安装。
+#' @param label Logical; whether to display the title and explanatory text.
+#'   \code{TRUE} (default) shows the title and annotations; \code{FALSE} draws
+#'   only the flag.
 #'
-#' @param label logical，是否显示标题与文字说明。
-#'   \describe{
-#'     \item{TRUE}{显示标题与文字注释（默认）}
-#'     \item{FALSE}{仅绘制旗帜本体，不显示任何文字}
-#'   }
-#'
-#' @return
-#' 返回一个 \code{ggplot} 对象，可直接打印或通过
-#' \code{ggsave()} 导出为图片文件。
+#' @return A \code{ggplot} object, which can be printed or saved with
+#'   \code{ggsave()}.
 #'
 #' @details
 #' \itemize{
-#'   \item 旗帜由五条等高横向矩形构成
-#'   \item 自上而下颜色依次为：红、黄、蓝、白、黑
-#'   \item 自上而下颜色依次代表：汉、满、蒙、回、藏
-#'   \item 使用 \code{coord_quickmap()} 保证比例不变形
-#'   \item 不显示坐标轴、网格与图例
+#'   \item The flag is built from five equal-height horizontal rectangles.
+#'   \item From top to bottom the colours are red, yellow, blue, white, black.
+#'   \item These represent the Han, Manchu, Mongol, Hui and Tibetan peoples.
+#'   \item \code{ggplot2::coord_quickmap()} keeps the proportions undistorted.
+#'   \item Axes, grid and legend are hidden.
 #' }
 #'
 #' @examples
-#' \dontrun{
-#' # 绘制带文字说明的五族共和旗
+#' \donttest{
 #' plot_ROC_Beiyang_flag()
-#' }
-#'
-#' \dontrun{
-#' # 仅绘制旗帜本体（适合导出图片）
 #' plot_ROC_Beiyang_flag(label = FALSE)
 #' }
 #'
-#' @seealso
-#' \code{\link[ggplot2]{geom_rect}},
-#' \code{\link[ggplot2]{coord_quickmap}}
+#' @seealso \code{\link[ggplot2]{geom_rect}},
+#'   \code{\link[ggplot2]{coord_quickmap}}
 #'
-#' @author
-#' 历史旗帜样式来源：北洋政府时期官方旗帜；
+#' @author Historical flag of the Beiyang Government era.
 #'
 #' @export
-plot_ROC_Beiyang_flag<-function(label=T){
-  # # ------------------------------------------------------------
-  # # 自动检查 / 安装 / 加载所需 R 包
-  # # ------------------------------------------------------------
-  # packages <- c(
-  #   "tidyverse",
-  #   "sysfonts",
-  #   "showtextdb",
-  #   "showtext"
-  # )
-  #
-  # for (pkg in packages) {
-  #   library(pkg, character.only = TRUE)
-  # }
+plot_ROC_Beiyang_flag<-function(label=TRUE){
   # ------------------------------------------------------------
   # 标题和坐标轴标签
   # ------------------------------------------------------------
-  if(label==T){
-    labels<-list(x='北洋政府 - 五族共和旗',
-                 y='汉满蒙回藏\n（红黄蓝白黑）',
-                 title='北洋政府时期（1921-1928）')
+  if(label==TRUE){
+    labels<-list(x='\u5317\u6d0b\u653f\u5e9c - \u4e94\u65cf\u5171\u548c\u65d7',  # 北洋政府 - 五族共和旗
+                 y='\u6c49\u6ee1\u8499\u56de\u85cf\n\uff08\u7ea2\u9ec4\u84dd\u767d\u9ed1\uff09',  # 汉满蒙回藏\n（红黄蓝白黑）
+                 title='\u5317\u6d0b\u653f\u5e9c\u65f6\u671f\uff081912-1928\uff09')  # 北洋政府时期（1912-1928）
   }else{
     labels<-list(x='',
                  y='',
@@ -362,95 +312,57 @@ plot_ROC_Beiyang_flag<-function(label=T){
 
 
 
-#' 绘制国民政府时期青天白日满地红旗
+#' Plot the Blue Sky, White Sun, and a Wholly Red Earth flag
 #'
-#' 使用解析几何与 \code{ggplot2} / \code{ggforce} 程序化绘制
-#' 国民政府时期（1928–1949 年）使用的“青天白日满地红旗”。
-#' 旗帜构成包括红色底旗、左上角蓝底矩形，以及位于蓝底中的
-#' 青天白日十二光芒图案，全部由向量几何元素计算生成，
-#' 不依赖任何外部图像文件。
+#' Programmatically draws the Blue Sky, White Sun, and a Wholly Red Earth flag
+#' used during the Nationalist Government period (1928-1949) of the Republic of
+#' China, using analytic geometry with \code{ggplot2} and \code{ggforce}. The
+#' flag has a red field, a blue canton in the upper-left, and a twelve-rayed
+#' white sun within the canton, all generated from vector geometry without
+#' external image files.
 #'
-#' 白日十二光芒的顶点与内凹点基于圆的三角函数关系精确计算，
-#' 并通过对称变换构建完整闭合多边形；中心双圆使用
-#' \code{ggforce::geom_circle()} 绘制，以保证比例一致性。
+#' @param label Logical; whether to display the title and explanatory text.
+#'   \code{TRUE} (default) shows the title, designer and period; \code{FALSE}
+#'   draws only the flag.
 #'
-#' 本函数在运行时会自动检测并加载所需依赖包
-#'（\code{tidyverse}、\code{sysfonts}、\code{showtextdb}、
-#' \code{showtext}、\code{ggforce}），
-#' 若缺失则会从 CRAN 自动安装。
-#'
-#' 旗帜比例与构造参考公开的历史与几何构造资料：
-#' \itemize{
-#'   \item 中文维基百科相关页面
-#'   \item Wikimedia Commons 官方构造示意图
-#' }
-#'
-#' @param label logical，是否显示标题与文字说明。
-#'   \describe{
-#'     \item{TRUE}{显示标题、设计者及历史时期说明（默认）}
-#'     \item{FALSE}{仅绘制旗帜本体，不显示任何文字}
-#'   }
-#'
-#' @return
-#' 返回一个 \code{ggplot} 对象，可直接打印，
-#' 或通过 \code{ggsave()} 导出为矢量或位图文件。
+#' @return A \code{ggplot} object, which can be printed or saved with
+#'   \code{ggsave()}.
 #'
 #' @details
 #' \itemize{
-#'   \item 红色背景与蓝色旗角使用矩形几何元素构建
-#'   \item 白日十二光芒由 24 个顶点组成的闭合多边形表示
-#'   \item 中心双圆用于表示白日核心结构
-#'   \item 使用 \code{coord_quickmap()} 保证比例不变形
-#'   \item 默认隐藏坐标轴、网格与图例
+#'   \item The red field and blue canton are built from rectangles.
+#'   \item The twelve-rayed sun is a closed polygon of 24 vertices.
+#'   \item Two concentric circles form the core of the white sun.
+#'   \item \code{ggplot2::coord_quickmap()} keeps the proportions undistorted.
+#'   \item Axes, grid and legend are hidden by default.
 #' }
 #'
 #' @examples
-#' \dontrun{
-#' # 绘制带文字说明的青天白日满地红旗
+#' \donttest{
 #' plot_ROC_KMT_flag()
-#' }
-#'
-#' \dontrun{
-#' # 仅绘制旗帜本体（适合导出图片）
 #' plot_ROC_KMT_flag(label = FALSE)
 #' }
 #'
-#' @seealso
-#' \code{\link[ggplot2]{geom_polygon}},
-#' \code{\link[ggplot2]{geom_rect}},
-#' \code{\link[ggforce]{geom_circle}}
+#' @seealso \code{\link[ggplot2]{geom_polygon}},
+#'   \code{\link[ggplot2]{geom_rect}},
+#'   \code{\link[ggforce]{geom_circle}}
 #'
-#' @author
-#' 设计者：孙中山（方案提议）、陆皓东（青天白日设计）
+#' @author Design: Sun Yat-sen (proposal) and Lu Haodong (Blue Sky, White Sun).
 #'
 #' @export
-plot_ROC_KMT_flag<-function(label=T){
+plot_ROC_KMT_flag<-function(label=TRUE){
   # ------------------------------------------------------------
   # 设计参考：https://zh.wikipedia.org/wiki/%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E5%9C%8B%E6%97%97
   # https://commons.wikimedia.org/wiki/File:Flag_of_the_Republic_of_China_construction_sheet.svg
   # ------------------------------------------------------------
 
-  # # ------------------------------------------------------------
-  # # 自动检查 / 安装 / 加载所需 R 包
-  # # ------------------------------------------------------------
-  # packages <- c(
-  #   "tidyverse",
-  #   "sysfonts",
-  #   "showtextdb",
-  #   "showtext",
-  #   "ggforce"
-  # )
-  #
-  # for (pkg in packages) {
-  #   library(pkg, character.only = TRUE)
-  # }
   # ------------------------------------------------------------
   # 标题和坐标轴标签
   # ------------------------------------------------------------
-  if(label==T){
-    labels<-list(x='国民政府 - 青天白日满地红旗',
-                 y='设计者：孙中山、陆皓东',
-                 title='国民政府时期（1928-1949）')
+  if(label==TRUE){
+    labels<-list(x='\u56fd\u6c11\u653f\u5e9c - \u9752\u5929\u767d\u65e5\u6ee1\u5730\u7ea2\u65d7',  # 国民政府 - 青天白日满地红旗
+                 y='\u8bbe\u8ba1\u8005\uff1a\u5b59\u4e2d\u5c71\u3001\u9646\u7693\u4e1c',  # 设计者：孙中山、陆皓东
+                 title='\u56fd\u6c11\u653f\u5e9c\u65f6\u671f\uff081928-1949\uff09')  # 国民政府时期（1928-1949）
   }else{
     labels<-list(x='',
                  y='',
@@ -523,8 +435,8 @@ plot_ROC_KMT_flag<-function(label=T){
                  fill="white")+
     ggforce::geom_circle(ggplot2::aes(x0=12, y0=24, r=3*(1+1/15)), fill='#0000AA')+
     ggforce::geom_circle(ggplot2::aes(x0=12, y0=24, r=3), fill='white')+
-    coord_quickmap()+#调整为1：1比例显示
-    theme(legend.key = ggplot2::element_blank(),
+    ggplot2::coord_quickmap()+#调整为1：1比例显示
+    ggplot2::theme(legend.key = ggplot2::element_blank(),
           panel.grid.major=ggplot2::element_line(colour=NA),
           panel.background = ggplot2::element_rect(fill = "transparent",colour = NA),
           plot.background = ggplot2::element_rect(fill = "transparent",colour = NA),
@@ -542,65 +454,52 @@ plot_ROC_KMT_flag<-function(label=T){
 
 
 
-#' 绘制铁血十八星旗（九角十八星旗）
+
+#' Plot the Iron-Blood 18-Star Flag of the Wuchang Uprising
 #'
-#' 使用解析几何与 \code{ggplot2} / \code{ggforce} 程序化绘制
-#' 辛亥革命武昌起义后湖北军政府所使用的“铁血十八星旗”，
-#' 又称九角十八星旗。旗面由红色底旗、中心黑色九角星以及
-#' 环绕星内外各九个黄色圆点构成，分别象征当时汉族十八行省。
+#' Draws the Iron-Blood 18-Star Flag (also called the Nine-Pointed
+#' Eighteen-Star Flag) used by the Hubei military government after the Wuchang
+#' Uprising of the Xinhai Revolution. The flag has a red field, a central black
+#' nine-pointed star, and nine inner and nine outer yellow dots representing the
+#' eighteen Han provinces of the time. All shapes are generated by vector
+#' computation, without external image files.
 #'
-#' 九角星的顶点与内凹点通过几何构造方法精确计算，
-#' 外圈九个黄点沿星角外缘均匀分布，内圈九个黄点位于星内
-#' 外接圆半径的中间位置。全部图形由向量计算生成，
-#' 不依赖任何外部图像文件。
+#' @param label Logical; whether to display the title and explanatory text.
+#'   \code{TRUE} (default) shows the title, designer and historical background;
+#'   \code{FALSE} draws only the flag.
 #'
-#' 旗帜的构造细节参考了“19111010”网站（见参考文献）。
-#'
-#' @param label logical，是否显示标题与说明文字。
-#'   \describe{
-#'     \item{TRUE}{显示标题、设计者及历史背景文字（默认）}
-#'     \item{FALSE}{仅绘制旗帜本体，不显示任何文字}
-#'   }
-#'
-#' @return
-#' 返回一个 \code{ggplot} 对象，可直接打印或通过
-#' \code{ggsave()} 导出为矢量或位图文件。
+#' @return A \code{ggplot} object, which can be printed or saved with
+#'   \code{ggsave()}.
 #'
 #' @details
 #' \itemize{
-#'   \item 旗帜高宽比为 5:8，坐标系 x 范围为 [-80, 80]，y 范围为 [-50, 50]
-#'   \item 九角星外接圆半径为 44 单位，内部小圆半径为 8 单位
-#'   \item 外圈九个黄点置于星角外沿，内圈九个黄点置于圆心与星角连线的中间位置
-#'   \item 使用 \code{coord_fixed(ratio = 1)} 保证显示比例不变形
-#'   \item 坐标轴、网格及图例默认隐藏
+#'   \item The aspect ratio is 5:8; x ranges over [-80, 80], y over [-50, 50].
+#'   \item The nine-pointed star has a circumscribed radius of 44 units and an
+#'     inner radius of 8 units.
+#'   \item Nine outer yellow dots sit along the star tips; nine inner dots sit
+#'     midway between the centre and the tips.
+#'   \item \code{ggplot2::coord_fixed(ratio = 1)} keeps the proportions fixed.
+#'   \item Axes, grid and legend are hidden by default.
 #' }
 #'
 #' @examples
-#' \dontrun{
-#' # 绘制带文字说明的铁血十八星旗
+#' \donttest{
 #' plot_Han18Star()
-#' }
-#'
-#' \dontrun{
-#' # 仅绘制旗帜本体（适合导出图片）
 #' plot_Han18Star(label = FALSE)
 #' }
 #'
-#' @seealso
-#' \code{\link[ggplot2]{geom_polygon}},
-#' \code{\link[ggforce]{geom_circle}},
-#' \code{\link{plot_P.R.CHINA_flag}},
-#' \code{\link{plot_ROC_Beiyang_flag}},
-#' \code{\link{plot_ROC_KMT_flag}}
+#' @seealso \code{\link[ggplot2]{geom_polygon}},
+#'   \code{\link[ggforce]{geom_circle}},
+#'   \code{\link{plot_P.R.CHINA_flag}},
+#'   \code{\link{plot_ROC_Beiyang_flag}},
+#'   \code{\link{plot_ROC_KMT_flag}}
 #'
-#' @author
-#' 旗帜设计：中国革命同盟会；
+#' @author Flag design: the Chinese Revolutionary Alliance (Tongmenghui).
 #'
-#' @references
-#' \url{https://www.19111010.com.tw/story?id=93}
+#' @references \url{https://www.19111010.com.tw/story?id=93}
 #'
 #' @export
-plot_Han18Star<-function(label=T){
+plot_Han18Star<-function(label=TRUE){
 
   #参考链接：https://www.19111010.com.tw/story?id=93
   #设置旗子长160个单位，宽100个单位
@@ -967,10 +866,10 @@ plot_Han18Star<-function(label=T){
                          fill = "yellow", color=NA)
   )
 
-  if(label==T){
-    labels<-list(x='铁血十八星旗',
-                 y='设计：中国革命同盟会',
-                 title='武昌起义 — 中华民国湖北军政府')
+  if(label==TRUE){
+    labels<-list(x='\u94c1\u8840\u5341\u516b\u661f\u65d7',  # 铁血十八星旗
+                 y='\u8bbe\u8ba1\uff1a\u4e2d\u56fd\u9769\u547d\u540c\u76df\u4f1a',  # 设计：中国革命同盟会
+                 title='\u6b66\u660c\u8d77\u4e49 \u2014 \u4e2d\u534e\u6c11\u56fd\u6e56\u5317\u519b\u653f\u5e9c')  # 武昌起义 — 中华民国湖北军政府
   }else{
     labels<-list(x='',
                  y='',

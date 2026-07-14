@@ -1,15 +1,9 @@
 #' Plot the emblem or flag of the Communist Party of China (CCP)
 #'
-#' 绘制中国共产党（CCP）的镰刀锤子标志或旗帜。
-#'
 #' This function programmatically renders the emblem of the Communist Party of
 #' China using analytic geometry and ggplot2-based vector graphics. The symbol
 #' is constructed entirely from geometric primitives (arcs, polygons, and
 #' rectangles), without relying on any external image files.
-#'
-#' 本函数基于解析几何方法，使用 ggplot2 与 ggforce 绘制中国共产党
-#' 的镰刀锤子标志。图形完全由几何图元（圆弧、多边形、矩形）构成，
-#' 不依赖任何外部图片资源，具有良好的可复现性与可扩展性。
 #'
 #' Two rendering modes are supported:
 #' \itemize{
@@ -19,56 +13,37 @@
 #'   logo-style visualization.
 #' }
 #'
-#' 支持两种绘制模式：
-#' \itemize{
-#'   \item \code{"flag"}：3:2 比例的矩形背景，适用于旗帜展示；
-#'   \item \code{"logo"}：1:1 比例的正方形背景，适用于徽标展示。
-#' }
-#'
 #' @param plot_type Character string specifying the rendering mode.
 #'   Either \code{"flag"} (default) or \code{"logo"}.
-#'   指定绘制模式，可选 \code{"flag"}（默认）或 \code{"logo"}。
-#'
 #' @param label Logical value indicating whether to display textual annotations
 #'   (title and axis labels). Default is \code{FALSE}.
-#'   是否显示文字注释（标题与标注），默认不显示。
 #'
-#' @return
-#' A \code{ggplot} object representing the CCP emblem or flag.
-#' 返回一个 \code{ggplot} 对象。
+#' @return A \code{ggplot} object representing the CCP emblem or flag.
 #'
 #' @details
-#' The geometric construction follows a stepwise layering strategy, including:
-#' outer and inner arcs of the sickle, the handle, and the hammer body.
+#' The geometric construction follows a stepwise layering strategy, including
+#' the outer and inner arcs of the sickle, the handle, and the hammer body.
 #' All coordinates are transformed into a unified plotting coordinate system.
 #'
-#' 图形采用分层绘制策略，依次构造镰刀外圆、内圆、柄部以及锤子主体，
-#' 并统一转换为绘图坐标系，以保证结构比例的准确性。
-#'
 #' @examples
-#' \dontrun{
-#' # # 基本用法 Plot CCP flag style
+#' \donttest{
 #' plot_CCP(plot_type = "flag")
-#'
-#' # Plot CCP logo style
 #' plot_CCP(plot_type = "logo")
 #' }
 #'
-#' @author
-#' 《中国共产党党徽党旗条例》；
+#' @author Per the regulations on the emblem and flag of the Communist Party of China.
 #'
-#' @seealso
-#' \code{\link{plotCNFlag}} for the unified flag plotting interface.
+#' @seealso \code{\link{plotCNFlag}} for the unified flag plotting interface.
 #'
 #' @export
-plot_CCP<-function(plot_type='flag',label=F){
+plot_CCP<-function(plot_type='flag',label=FALSE){
   # ------------------------------------------------------------
   # 标题和坐标轴标签
   # ------------------------------------------------------------
-  if(label==T){
-    labels<-list(x='镰刀锤子',
-                 y='设计：1996《中国共产党党旗党徽制作和使用的若干规定》',
-                 title='中国共产党 CCP （1921-至今）')
+  if(label==TRUE){
+    labels<-list(x='\u9570\u5200\u9524\u5b50',  # 镰刀锤子
+                 y='\u8bbe\u8ba1\uff1a1996\u300a\u4e2d\u56fd\u5171\u4ea7\u515a\u515a\u65d7\u515a\u5fbd\u5236\u4f5c\u548c\u4f7f\u7528\u7684\u82e5\u5e72\u89c4\u5b9a\u300b',  # 设计：1996《中国共产党党旗党徽制作和使用的若干规定》
+                 title='\u4e2d\u56fd\u5171\u4ea7\u515a CCP \uff081921-\u81f3\u4eca\uff09')  # 中国共产党 CCP （1921-至今）
   }else{
     labels<-list(x='',
                  y='',
@@ -433,97 +408,69 @@ plot_CCP<-function(plot_type='flag',label=F){
           axis.ticks = ggplot2::element_blank(),
           legend.position = 'none',
           panel.grid  = ggplot2::element_blank())+#隐藏坐标系
-  labs(x=labels$x,
+  ggplot2::labs(x=labels$x,
        y=labels$y,
        title=labels$title)+
-    showtext_auto()#显示中文文本
+    showtext::showtext_auto()#显示中文文本
   return(ccp_logo)
 }
 
 
 
+
 #' Plot the Blue Sky with a White Sun flag (Kuomintang / Republic of China)
 #'
-#' 绘制「青天白日旗」（中国国民党党旗 / 中华民国国徽核心图案）。
-#'
-#' This function programmatically renders the *Blue Sky with a White Sun* symbol
-#' using analytic geometry and ggplot2-based vector graphics. The emblem consists
-#' of a blue background and a twelve-rayed white sun, constructed entirely from
-#' geometric primitives such as polygons, circles, and arcs, without relying on
-#' any external image files.
-#'
-#' 本函数基于解析几何方法，使用 \code{ggplot2} 与 \code{ggforce} 以向量方式
-#' 绘制青天白日旗图案。十二道白色光芒通过精确的角度与坐标计算生成，
-#' 图形完全由几何图元构成，不依赖任何外部图片资源，具有高度可复现性。
+#' This function programmatically renders the Blue Sky with a White Sun symbol
+#' using analytic geometry and ggplot2-based vector graphics. The emblem
+#' consists of a blue background and a twelve-rayed white sun, constructed
+#' entirely from geometric primitives such as polygons, circles, and arcs,
+#' without relying on any external image files.
 #'
 #' The geometric construction follows the official construction sheets and
-#' historical specifications of the flag, ensuring proportional accuracy of
-#' the twelve rays and concentric circles.
-#'
-#' 图形结构参考官方制图规范与历史资料，严格保证十二光芒与同心圆的比例关系。
+#' historical specifications of the flag, ensuring proportional accuracy of the
+#' twelve rays and concentric circles.
 #'
 #' @param label Logical value indicating whether to display textual annotations
 #'   (title and axis labels). Default is \code{TRUE}.
-#'   是否显示文字注释（标题与标注），默认显示。
 #'
-#' @return
-#' A \code{ggplot} object representing the Blue Sky with a White Sun flag.
-#' 返回一个表示青天白日旗的 \code{ggplot} 对象。
+#' @return A \code{ggplot} object representing the Blue Sky with a White Sun flag.
 #'
 #' @details
 #' The twelve-rayed sun is constructed by alternating outer and inner vertices
-#' arranged in a clockwise order, forming a closed polygon. Two concentric
-#' circles are then overlaid to form the central white sun core.
-#'
-#' 十二光芒通过外顶点与内底点交替排列形成闭合多边形，
-#' 并叠加两个同心圆以构成太阳核心。
+#' arranged in clockwise order, forming a closed polygon. Two concentric circles
+#' are then overlaid to form the central white sun core.
 #'
 #' @references
-#' Wikipedia contributors. *Flag of the Republic of China*.
+#' Wikipedia contributors. Flag of the Republic of China.
 #' \url{https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China}
 #'
 #' Wikimedia Commons.
 #' \url{https://commons.wikimedia.org/wiki/File:Flag_of_the_Republic_of_China_construction_sheet.svg}
 #'
-#' @seealso
-#' \code{\link{plotCNFlag}} for the unified flag plotting interface.
+#' @seealso \code{\link{plotCNFlag}} for the unified flag plotting interface.
 #'
 #' @examples
-#' \dontrun{
-#' plot_ROC_KMT_flag()
-#' plot_ROC_KMT_flag(label = FALSE)
+#' \donttest{
+#' plot_KMT()
+#' plot_KMT(label = FALSE)
 #' }
 #'
-#' @author
-#' 设计者：陆皓东
+#' @author Design: Lu Haodong.
+#'
 #' @export
-plot_KMT<-function(label=T){
+plot_KMT<-function(label=TRUE){
   # ------------------------------------------------------------
   # 设计参考：https://zh.wikipedia.org/wiki/%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E5%9C%8B%E6%97%97
   # https://commons.wikimedia.org/wiki/File:Flag_of_the_Republic_of_China_construction_sheet.svg
   # ------------------------------------------------------------
 
-  # # ------------------------------------------------------------
-  # # 自动检查 / 安装 / 加载所需 R 包
-  # # ------------------------------------------------------------
-  # packages <- c(
-  #   "tidyverse",
-  #   "sysfonts",
-  #   "showtextdb",
-  #   "showtext",
-  #   "ggforce"
-  # )
-  #
-  # for (pkg in packages) {
-  #   library(pkg, character.only = TRUE)
-  # }
   # ------------------------------------------------------------
   # 标题和坐标轴标签
   # ------------------------------------------------------------
-  if(label==T){
-    labels<-list(x='青天白日旗',
-                 y='设计者：陆皓东',
-                 title='中国国民党 KMT（1919-至今）')
+  if(label==TRUE){
+    labels<-list(x='\u9752\u5929\u767d\u65e5\u65d7',  # 青天白日旗
+                 y='\u8bbe\u8ba1\u8005\uff1a\u9646\u7693\u4e1c',  # 设计者：陆皓东
+                 title='\u4e2d\u56fd\u56fd\u6c11\u515a KMT\uff081919-\u81f3\u4eca\uff09')  # 中国国民党 KMT（1919-至今）
   }else{
     labels<-list(x='',
                  y='',

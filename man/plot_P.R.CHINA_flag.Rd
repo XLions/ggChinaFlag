@@ -2,56 +2,47 @@
 % Please edit documentation in R/plot_national_flag.R
 \name{plot_P.R.CHINA_flag}
 \alias{plot_P.R.CHINA_flag}
-\title{绘制标准五星红旗（几何构造法）}
+\title{Plot the national flag of the People's Republic of China}
 \usage{
-plot_P.R.CHINA_flag(label = T)
+plot_P.R.CHINA_flag(label = TRUE)
 }
 \arguments{
-\item{label}{logical，是否显示标题与坐标轴文字。
-\describe{
-  \item{TRUE}{显示标题、作者及参考信息（默认）}
-  \item{FALSE}{不显示任何文字，仅绘制图形}
-}}
+\item{label}{Logical; whether to display the title and axis text. If
+\code{TRUE} (default) the title, designer and reference information are
+shown; if \code{FALSE} only the flag is drawn.}
 }
 \value{
-返回一个 \code{ggplot} 对象，可直接打印或用于 \code{ggsave()} 保存。
+A \code{ggplot} object, which can be printed directly or saved with
+  \code{ggsave()}.
 }
 \description{
-使用纯几何计算与 \code{ggplot2} 绘制符合规范比例的中华人民共和国国旗。
-五角星的形状与朝向通过解析几何方法精确计算，小星均指向大星中心，
-不依赖外部图片或 SVG 资源，适合教学演示与程序化绘图。
+Draws the national flag of the People's Republic of China at the regulation
+proportions using pure geometric computation and \code{ggplot2}. The shape
+and orientation of the stars are computed analytically so that each small
+star points to the centre of the large star. No external image or SVG
+resources are used, which makes the function suitable for teaching and
+programmatic graphics.
 }
 \details{
-本函数在运行时会自动检测并加载所需依赖包
-（\code{tidyverse}、\code{sysfonts}、\code{showtextdb}、\code{showtext}），
-若未安装则会自动从 CRAN 安装。
-
-几何构造方法参考 B 站视频：BV1Ni4y1978g。
-
-
 \itemize{
-  \item 国旗比例为 3:2
-  \item 大五角星位于左上角
-  \item 四颗小五角星按规范位置分布，并旋转指向大星中心
-  \item 使用 \code{coord_quickmap()} 保证 x:y 比例为 1:1
+  \item The flag has a 3:2 aspect ratio.
+  \item The large star is placed in the upper-left canton.
+  \item The four small stars are positioned per the specification and
+    rotated to point at the large star.
+  \item \code{ggplot2::coord_quickmap()} keeps a 1:1 x:y ratio.
 }
 }
 \examples{
-\dontrun{
-# 基本用法
+\donttest{
 plot_P.R.CHINA_flag()
-}
-
-\dontrun{
-# 不显示任何文字，适合导出图片
 plot_P.R.CHINA_flag(label = FALSE)
 }
 
 }
 \seealso{
 \code{\link[ggplot2]{geom_polygon}},
-\code{\link[ggplot2]{coord_quickmap}}
+  \code{\link[ggplot2]{coord_quickmap}}
 }
 \author{
-曾联松（国旗设计者）；
+Flag design: Zeng Liansong.
 }

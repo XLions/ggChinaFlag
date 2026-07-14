@@ -4,54 +4,41 @@
 \alias{plot_KMT}
 \title{Plot the Blue Sky with a White Sun flag (Kuomintang / Republic of China)}
 \usage{
-plot_KMT(label = T)
+plot_KMT(label = TRUE)
 }
 \arguments{
 \item{label}{Logical value indicating whether to display textual annotations
-(title and axis labels). Default is \code{TRUE}.
-是否显示文字注释（标题与标注），默认显示。}
+(title and axis labels). Default is \code{TRUE}.}
 }
 \value{
 A \code{ggplot} object representing the Blue Sky with a White Sun flag.
-返回一个表示青天白日旗的 \code{ggplot} 对象。
 }
 \description{
-绘制「青天白日旗」（中国国民党党旗 / 中华民国国徽核心图案）。
+This function programmatically renders the Blue Sky with a White Sun symbol
+using analytic geometry and ggplot2-based vector graphics. The emblem
+consists of a blue background and a twelve-rayed white sun, constructed
+entirely from geometric primitives such as polygons, circles, and arcs,
+without relying on any external image files.
 }
 \details{
-This function programmatically renders the *Blue Sky with a White Sun* symbol
-using analytic geometry and ggplot2-based vector graphics. The emblem consists
-of a blue background and a twelve-rayed white sun, constructed entirely from
-geometric primitives such as polygons, circles, and arcs, without relying on
-any external image files.
-
-本函数基于解析几何方法，使用 \code{ggplot2} 与 \code{ggforce} 以向量方式
-绘制青天白日旗图案。十二道白色光芒通过精确的角度与坐标计算生成，
-图形完全由几何图元构成，不依赖任何外部图片资源，具有高度可复现性。
-
 The geometric construction follows the official construction sheets and
-historical specifications of the flag, ensuring proportional accuracy of
-the twelve rays and concentric circles.
-
-图形结构参考官方制图规范与历史资料，严格保证十二光芒与同心圆的比例关系。
+historical specifications of the flag, ensuring proportional accuracy of the
+twelve rays and concentric circles.
 
 
 The twelve-rayed sun is constructed by alternating outer and inner vertices
-arranged in a clockwise order, forming a closed polygon. Two concentric
-circles are then overlaid to form the central white sun core.
-
-十二光芒通过外顶点与内底点交替排列形成闭合多边形，
-并叠加两个同心圆以构成太阳核心。
+arranged in clockwise order, forming a closed polygon. Two concentric circles
+are then overlaid to form the central white sun core.
 }
 \examples{
-\dontrun{
-plot_ROC_KMT_flag()
-plot_ROC_KMT_flag(label = FALSE)
+\donttest{
+plot_KMT()
+plot_KMT(label = FALSE)
 }
 
 }
 \references{
-Wikipedia contributors. *Flag of the Republic of China*.
+Wikipedia contributors. Flag of the Republic of China.
 \url{https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China}
 
 Wikimedia Commons.
@@ -61,5 +48,5 @@ Wikimedia Commons.
 \code{\link{plotCNFlag}} for the unified flag plotting interface.
 }
 \author{
-设计者：陆皓东
+Design: Lu Haodong.
 }

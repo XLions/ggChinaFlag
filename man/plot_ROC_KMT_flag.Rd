@@ -2,70 +2,48 @@
 % Please edit documentation in R/plot_national_flag.R
 \name{plot_ROC_KMT_flag}
 \alias{plot_ROC_KMT_flag}
-\title{绘制国民政府时期青天白日满地红旗}
+\title{Plot the Blue Sky, White Sun, and a Wholly Red Earth flag}
 \usage{
-plot_ROC_KMT_flag(label = T)
+plot_ROC_KMT_flag(label = TRUE)
 }
 \arguments{
-\item{label}{logical，是否显示标题与文字说明。
-\describe{
-  \item{TRUE}{显示标题、设计者及历史时期说明（默认）}
-  \item{FALSE}{仅绘制旗帜本体，不显示任何文字}
-}}
+\item{label}{Logical; whether to display the title and explanatory text.
+\code{TRUE} (default) shows the title, designer and period; \code{FALSE}
+draws only the flag.}
 }
 \value{
-返回一个 \code{ggplot} 对象，可直接打印，
-或通过 \code{ggsave()} 导出为矢量或位图文件。
+A \code{ggplot} object, which can be printed or saved with
+  \code{ggsave()}.
 }
 \description{
-使用解析几何与 \code{ggplot2} / \code{ggforce} 程序化绘制
-国民政府时期（1928–1949 年）使用的“青天白日满地红旗”。
-旗帜构成包括红色底旗、左上角蓝底矩形，以及位于蓝底中的
-青天白日十二光芒图案，全部由向量几何元素计算生成，
-不依赖任何外部图像文件。
+Programmatically draws the Blue Sky, White Sun, and a Wholly Red Earth flag
+used during the Nationalist Government period (1928-1949) of the Republic of
+China, using analytic geometry with \code{ggplot2} and \code{ggforce}. The
+flag has a red field, a blue canton in the upper-left, and a twelve-rayed
+white sun within the canton, all generated from vector geometry without
+external image files.
 }
 \details{
-白日十二光芒的顶点与内凹点基于圆的三角函数关系精确计算，
-并通过对称变换构建完整闭合多边形；中心双圆使用
-\code{ggforce::geom_circle()} 绘制，以保证比例一致性。
-
-本函数在运行时会自动检测并加载所需依赖包
-（\code{tidyverse}、\code{sysfonts}、\code{showtextdb}、
-\code{showtext}、\code{ggforce}），
-若缺失则会从 CRAN 自动安装。
-
-旗帜比例与构造参考公开的历史与几何构造资料：
 \itemize{
-  \item 中文维基百科相关页面
-  \item Wikimedia Commons 官方构造示意图
-}
-
-
-\itemize{
-  \item 红色背景与蓝色旗角使用矩形几何元素构建
-  \item 白日十二光芒由 24 个顶点组成的闭合多边形表示
-  \item 中心双圆用于表示白日核心结构
-  \item 使用 \code{coord_quickmap()} 保证比例不变形
-  \item 默认隐藏坐标轴、网格与图例
+  \item The red field and blue canton are built from rectangles.
+  \item The twelve-rayed sun is a closed polygon of 24 vertices.
+  \item Two concentric circles form the core of the white sun.
+  \item \code{ggplot2::coord_quickmap()} keeps the proportions undistorted.
+  \item Axes, grid and legend are hidden by default.
 }
 }
 \examples{
-\dontrun{
-# 绘制带文字说明的青天白日满地红旗
+\donttest{
 plot_ROC_KMT_flag()
-}
-
-\dontrun{
-# 仅绘制旗帜本体（适合导出图片）
 plot_ROC_KMT_flag(label = FALSE)
 }
 
 }
 \seealso{
 \code{\link[ggplot2]{geom_polygon}},
-\code{\link[ggplot2]{geom_rect}},
-\code{\link[ggforce]{geom_circle}}
+  \code{\link[ggplot2]{geom_rect}},
+  \code{\link[ggforce]{geom_circle}}
 }
 \author{
-设计者：孙中山（方案提议）、陆皓东（青天白日设计）
+Design: Sun Yat-sen (proposal) and Lu Haodong (Blue Sky, White Sun).
 }

@@ -2,58 +2,47 @@
 % Please edit documentation in R/plot_national_flag.R
 \name{plot_ROC_Beiyang_flag}
 \alias{plot_ROC_Beiyang_flag}
-\title{绘制北洋政府时期五族共和旗（横五色旗）}
+\title{Plot the Five-Colored Flag of the Beiyang Government}
 \usage{
-plot_ROC_Beiyang_flag(label = T)
+plot_ROC_Beiyang_flag(label = TRUE)
 }
 \arguments{
-\item{label}{logical，是否显示标题与文字说明。
-\describe{
-  \item{TRUE}{显示标题与文字注释（默认）}
-  \item{FALSE}{仅绘制旗帜本体，不显示任何文字}
-}}
+\item{label}{Logical; whether to display the title and explanatory text.
+\code{TRUE} (default) shows the title and annotations; \code{FALSE} draws
+only the flag.}
 }
 \value{
-返回一个 \code{ggplot} 对象，可直接打印或通过
-\code{ggsave()} 导出为图片文件。
+A \code{ggplot} object, which can be printed or saved with
+  \code{ggsave()}.
 }
 \description{
-使用 \code{ggplot2} 以矩形色块方式绘制北洋政府时期
-（约 1912–1928 年）使用的“五族共和旗”，
-又称横五色旗。旗面由红、黄、蓝、白、黑五条等宽横色带组成，
-分别象征汉、满、蒙、回、藏五族。
+Draws the Five-Colored Flag used during the Beiyang Government period
+(circa 1912-1928) of the Republic of China, using horizontal colour bands
+rendered with \code{ggplot2}. The flag has five equal horizontal stripes in
+red, yellow, blue, white and black, symbolising the Han, Manchu, Mongol, Hui
+and Tibetan peoples. The drawing is fully programmatic and uses no external
+image resources.
 }
 \details{
-本函数采用程序化绘图方式，不依赖任何外部图像资源，
-适合教学演示、历史图形复现以及向量化图形输出。
-函数运行时会自动检测并加载所需依赖包，
-若缺失则从 CRAN 自动安装。
-
-
 \itemize{
-  \item 旗帜由五条等高横向矩形构成
-  \item 自上而下颜色依次为：红、黄、蓝、白、黑
-  \item 自上而下颜色依次代表：汉、满、蒙、回、藏
-  \item 使用 \code{coord_quickmap()} 保证比例不变形
-  \item 不显示坐标轴、网格与图例
+  \item The flag is built from five equal-height horizontal rectangles.
+  \item From top to bottom the colours are red, yellow, blue, white, black.
+  \item These represent the Han, Manchu, Mongol, Hui and Tibetan peoples.
+  \item \code{ggplot2::coord_quickmap()} keeps the proportions undistorted.
+  \item Axes, grid and legend are hidden.
 }
 }
 \examples{
-\dontrun{
-# 绘制带文字说明的五族共和旗
+\donttest{
 plot_ROC_Beiyang_flag()
-}
-
-\dontrun{
-# 仅绘制旗帜本体（适合导出图片）
 plot_ROC_Beiyang_flag(label = FALSE)
 }
 
 }
 \seealso{
 \code{\link[ggplot2]{geom_rect}},
-\code{\link[ggplot2]{coord_quickmap}}
+  \code{\link[ggplot2]{coord_quickmap}}
 }
 \author{
-历史旗帜样式来源：北洋政府时期官方旗帜；
+Historical flag of the Beiyang Government era.
 }
