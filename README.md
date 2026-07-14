@@ -45,7 +45,7 @@ plotCNFlag("Iron-Blood 18-Star Flag of the Wuchang Uprising", label = FALSE)
 ### See available flag names 查看可用的旗帜名称
 
 ```r
-FlatStorge()                # 默认 lang = "English" （毕竟中文不知道什么时候可能会报错🤷）
+FlatStorge()                # 默认 lang = "Chinese" （毕竟中国旗帜）
 
 # 中文名称
 FlatStorge("Chinese")
