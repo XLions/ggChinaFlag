@@ -60,13 +60,14 @@ FlatStorge("English")
 
 | 类别 | 中文名称 | English name |
 |------|----------|--------------|
-| 🇨🇳 国旗 | 中华人民共和国国旗 | Flag of the People's Republic of China |
+| 🇨🇳 国旗 | 中华人民共和国国旗 🇨🇳 | Flag of the People's Republic of China |
 |  | 中华民国青天白日旗 | Flag of the Republic of China (Blue Sky, White Sun, and Red Earth) |
 |  | 中华民国北洋政府五色旗 | Five-Color Flag of the Beiyang Government of the Republic of China |
 |  | 武昌起义铁血十八星旗 | Iron-Blood 18-Star Flag of the Wuchang Uprising |
 | 🚩 政党 | 中国共产党党旗 | Flag of the Communist Party of China |
 |  | 中国国民党党旗 | Flag of the Kuomintang (Blue Sky and White Sun flag) |
-
+| 🚩 区旗 | 香港特别行政区区旗 🇭🇰 | Regional Flag of the Hong Kong Special Administrative Region |
+|  | 澳门特别行政区区旗 🇲🇴 | Regional Flag of the Macao Special Administrative Region |
 ---
 
 ## 📖 Background | 历史背景
