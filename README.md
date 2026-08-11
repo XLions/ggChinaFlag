@@ -1,6 +1,6 @@
 
 # ggChinaFlag
-
+ [![CRAN](https://www.r-pkg.org/badges/version/ggChinaFlag)](https://cran.r-project.org/package=ggChinaFlag)   
 **ggChinaFlag** is an R package for programmatic construction and visualization of Chinese national, historical and political flags using **ggplot2** and analytic geometry.
 
 本包基于解析几何方法，使用 **ggplot2** 纯代码方式绘制中国近现代不同时期的国旗及政党旗帜，
