@@ -39,6 +39,7 @@
 #'   \item \code{"PLA Cyberspace Force"} / \code{"Cyber"} -- Cyberspace Force
 #'   \item \code{"PLA Information Support Force"} / \code{"Information"} -- Information Support Force
 #'   \item \code{"PLA Joint Logistics Support Force"} / \code{"Support"} -- Joint Logistics Support Force
+#'   \item \code{"People's Armed Police Force"} / \code{"CAPF"} -- China Armed Police Force flag (2018-)
 #' }
 #'
 #' @examples
@@ -483,19 +484,78 @@ plot_PLA<-function(subtype='general',label=TRUE){
                     title=labels$title)
     return(p_combined)
   }
+  plot_PLA_CAPF<-function(label=TRUE){
+    # ------------------------------------------------------------
+    # Design reference:
+    # Order of the Central Military Commission (Dec 2017); flag conferred
+    # on 10 Jan 2018 (Xinhua release). Ministry of National Defense
+    # spokesperson's Q&A (2018-01-10, with official flag image):
+    # the three dark olive-green stripes in the lower part represent the
+    # three main missions of the CAPF (safeguarding political security and
+    # social stability, maritime rights protection and law enforcement,
+    # and defense operations).
+    # Geometry verified against the official image (row-by-row pixel
+    # measurement): each olive stripe is H/12 high with an H/24 red gap
+    # (green:red = 2:1), i.e., the lower 3H/8 zone is divided into nine
+    # H/24 parts filled as [green, green, red] x 3.
+    # ------------------------------------------------------------
+
+    # ------------------------------------------------------------
+    # Title and axis labels
+    # ------------------------------------------------------------
+    if(label==TRUE){
+      labels <- list(
+        x = "The Chinese People\u2019s Armed Police Force",  # 横轴：中国人民武装警察部队
+        y = '(1982-)',                   # 纵轴：(1982-)
+        title = '\u4e2d\u56fd\u4eba\u6c11\u6b66\u88c5\u8b66\u5bdf\u90e8\u961f\u65d7'  # 标题：中国人民武装警察部队旗
+      )
+    } else {
+      labels <- list(
+        x = '',
+        y = '',
+        title = ''
+      )
+    }
+    # Olive-green stripes in the lower 3/8 zone (y from -16 to -4, i.e.,
+    # nine parts of H/24 = 4/3 each). The red gaps between stripes are
+    # left to the red background of plot_PLA_general().
+    # Stripe 1: y in [-20/3, -4]; stripe 2: y in [-32/3, -8];
+    # stripe 3: y in [-40/3, -12].
+    # Note: no official color value is published; #4D6040 is a sampled
+    # rendering value taken from the official flag image.
+    p_subtype<-list(
+      ggplot2::geom_rect(ggplot2::aes(xmin=(-20),xmax=20,ymax=(-4),ymin=(-20/3)),
+                         fill='#4D6040',color=NA),# 第一条橄榄绿横杠
+      ggplot2::geom_rect(ggplot2::aes(xmin=(-20),xmax=20,ymax=(-8),ymin=(-32/3)),
+                         fill='#4D6040',color=NA),# 第二条橄榄绿横杠
+      ggplot2::geom_rect(ggplot2::aes(xmin=(-20),xmax=20,ymax=(-12),ymin=(-40/3)),
+                         fill='#4D6040',color=NA) # 第三条橄榄绿横杠
+    )
+    p_combined<-
+      plot_PLA_general(label=label)+p_subtype+
+      ggplot2::labs(x=labels$x,
+                    y=labels$y,
+                    title=labels$title)
+    return(p_combined)
+  }
 
   #检索数据基础数据框
   search_table <- data.frame(
     Chinese = c("\u9646\u519b", "\u6d77\u519b",
-                "\u7a7a\u519b", "\u706b\u7bad\u519b", "\u519b\u4e8b\u822a\u5929\u90e8\u961f", "\u7f51\u7edc\u7a7a\u95f4\u90e8\u961f",
-                "\u4fe1\u606f\u652f\u63f4\u90e8\u961f", "\u8054\u52e4\u4fdd\u969c\u90e8\u961f"),
+                "\u7a7a\u519b", "\u706b\u7bad\u519b",
+                "\u519b\u4e8b\u822a\u5929\u90e8\u961f",
+                "\u7f51\u7edc\u7a7a\u95f4\u90e8\u961f",
+                "\u4fe1\u606f\u652f\u63f4\u90e8\u961f",
+                "\u8054\u52e4\u4fdd\u969c\u90e8\u961f",
+                "\u6b66\u8b66"),
     English = c("PLA Ground Force", "PLA Navy (PLAN)",
                 "PLA Air Force", "PLA Rocket Force",
                 "PLA Aerospace Force", "PLA Cyberspace Force",
                 "PLA Information Support Force",
-                "PLA Joint Logistics Support Force"),
+                "PLA Joint Logistics Support Force",
+                "People's Armed Police Force"),
     Abbr = c('Groud', 'Navy',
-             'Air','Rocket','Aerospace','Cyber','Information','Support'),
+             'Air','Rocket','Aerospace','Cyber','Information','Support','CAPF'),
     stringsAsFactors = FALSE,
     check.names = FALSE
   )
@@ -570,7 +630,8 @@ plot_PLA<-function(subtype='general',label=TRUE){
     Aerospace = plot_PLA_Aerospace,
     Cyber = plot_PLA_Cyberspace,
     Information = plot_PLA_Information,
-    Support = plot_PLA_Support
+    Support = plot_PLA_Support,
+    CAPF = plot_PLA_CAPF
   )
 
   # 根据缩写调用对应的子函数

@@ -8,9 +8,8 @@ plot_PLA(subtype = "general", label = TRUE)
 }
 \arguments{
 \item{subtype}{Character string specifying the service branch or flag type.
-Accepts Chinese names (e.g., \code{"海军"}), English names (e.g.,
-\code{"PLA Navy"}), or abbreviations (e.g., \code{"Navy"}). Use
-\code{"general"} (default) for the general PLA flag.}
+Accepts English names (e.g., \code{"PLA Navy"}) or abbreviations (e.g.,
+\code{"Navy"}). Use \code{"general"} (default) for the general PLA flag.}
 
 \item{label}{Logical value indicating whether to display textual annotations
 (title and axis labels). Default is \code{TRUE}.}
@@ -28,35 +27,36 @@ polygons, and stars), without relying on any external image files.
 \details{
 The function supports both the general PLA flag and a range of service
 branch flags. The desired flag is selected via the \code{subtype} argument,
-which accepts Chinese names, English names, or abbreviations. The matching
-is performed through a cleaned search table with fuzzy matching to tolerate
-common prefixes such as "中国人民解放军", "PLA", or "People's Liberation Army".
+which accepts English names or abbreviations. The matching is performed
+through a cleaned search table with fuzzy matching to tolerate common
+prefixes such as "PLA" or "People's Liberation Army".
 
 
 The geometric construction of the general PLA flag follows the design
 published by the People's Revolutionary Military Commission on 15 June 1949.
 The flag has a red background with a golden five-pointed star and the
-characters "八一" (8-1) in the upper left corner. Service branch flags
+characters "8-1" in the upper left corner. Service branch flags
 retain the upper 5/8 of the general flag and replace the lower 3/8 with
 branch-specific colors and patterns.
 
 Supported \code{subtype} values include:
 \itemize{
-  \item \code{"general"} — general PLA flag
-  \item \code{"陆军"} / \code{"PLA Ground Force"} / \code{"Groud"} — Army
-  \item \code{"海军"} / \code{"PLA Navy"} / \code{"Navy"} — Navy
-  \item \code{"空军"} / \code{"PLA Air Force"} / \code{"Air"} — Air Force
-  \item \code{"火箭军"} / \code{"PLA Rocket Force"} / \code{"Rocket"} — Rocket Force
-  \item \code{"军事航天部队"} / \code{"PLA Aerospace Force"} / \code{"Aerospace"} — Aerospace Force
-  \item \code{"网络空间部队"} / \code{"PLA Cyberspace Force"} / \code{"Cyber"} — Cyberspace Force
-  \item \code{"信息支援部队"} / \code{"PLA Information Support Force"} / \code{"Information"} — Information Support Force
-  \item \code{"联勤保障部队"} / \code{"PLA Joint Logistics Support Force"} / \code{"Support"} — Joint Logistics Support Force
+  \item \code{"general"} -- general PLA flag
+  \item \code{"PLA Ground Force"} / \code{"Groud"} -- Army
+  \item \code{"PLA Navy"} / \code{"Navy"} -- Navy
+  \item \code{"PLA Air Force"} / \code{"Air"} -- Air Force
+  \item \code{"PLA Rocket Force"} / \code{"Rocket"} -- Rocket Force
+  \item \code{"PLA Aerospace Force"} / \code{"Aerospace"} -- Aerospace Force
+  \item \code{"PLA Cyberspace Force"} / \code{"Cyber"} -- Cyberspace Force
+  \item \code{"PLA Information Support Force"} / \code{"Information"} -- Information Support Force
+  \item \code{"PLA Joint Logistics Support Force"} / \code{"Support"} -- Joint Logistics Support Force
+  \item \code{"People's Armed Police Force"} / \code{"CAPF"} -- China Armed Police Force flag (2018-)
 }
 }
 \examples{
 \donttest{
 plot_PLA()                          # general PLA flag
-plot_PLA("\u6d77\u519b")                    # PLA Navy flag
+plot_PLA("Navy")                    # PLA Navy flag
 plot_PLA("PLA Air Force")           # PLA Air Force flag
 plot_PLA("Rocket")                  # PLA Rocket Force flag
 plot_PLA(subtype = "Support", label = FALSE)
@@ -64,8 +64,8 @@ plot_PLA(subtype = "Support", label = FALSE)
 
 }
 \references{
-中国人民革命军事委员会. 中国人民革命军事委员会发布命令 公布中国人民解放军军旗及军徽样式[N].
-人民日报, 1949-06-15(1).
+People's Revolutionary Military Commission. Order on the Flag and Emblem of
+the Chinese People's Liberation Army. People's Daily, 1949-06-15(1).
 }
 \seealso{
 \code{\link{plot_CCP}} for the CCP emblem/flag plotting interface,

@@ -1,29 +1,27 @@
-
-# ggChinaFlag
+# ggChinaFlag <img src="man/figures/logo.png" align="right" height="138"/>
 
 **ggChinaFlag** is an R package for programmatic construction and visualization of Chinese national, historical, political, organisational and military flags using **ggplot2** and analytic geometry.
 
-本包基于解析几何方法，使用 **ggplot2** 纯代码方式绘制中国近现代不同时期的国旗、政党旗帜、组织旗帜、区旗及军事旗帜，
-不依赖任何外部图片资源，适用于教学演示、历史图形复现以及可重复的矢量化绘图场景。
+本包基于解析几何方法，使用 **ggplot2** 纯代码方式绘制中国近现代不同时期的国旗、政党旗帜、组织旗帜、区旗及军事旗帜， 不依赖任何外部图片资源，适用于教学演示、历史图形复现以及可重复的矢量化绘图场景。
 
----
+------------------------------------------------------------------------
 
-## ✨ Features | 功能特点
+## ✨ Features \| 功能特点
 
-- 📐 完全基于几何计算构造旗帜 （不依赖外部图片）Pure geometric construction (no image files)  
-- 🎨 **ggplot2** 生成的矢量图 Vector graphics based on **ggplot2**  
-- 🏳️ 支持多种历史国旗与政党标志 Supports multiple historical flags and party emblems  
-- 🚩 支持中国共产主义青年团团旗（依据 GB/T 40055-2021）Supports the CYLC flag (per GB/T 40055-2021)  
-- 🎖️ 支持中国人民解放军军旗及陆军、海军、空军、火箭军、军事航天部队、网络空间部队、信息支援部队、联勤保障部队等军种旗 Supports the PLA flag and service branch flags (Army, Navy, Air Force, Rocket Force, Aerospace Force, Cyberspace Force, Information Support Force, Joint Logistics Support Force)  
-- 🔍 统一接口 `plotCNFlag()`，可通过中文或英文名称直接调用所有旗帜 Unified interface `plotCNFlag()` to plot any supported flag by Chinese or English name  
+-   📐 完全基于几何计算构造旗帜 （不依赖外部图片）Pure geometric construction (no image files)\
+-   🎨 **ggplot2** 生成的矢量图 Vector graphics based on **ggplot2**\
+-   🏳️ 支持多种历史国旗与政党标志 Supports multiple historical flags and party emblems\
+-   🚩 支持中国共产主义青年团团旗（依据 GB/T 40055-2021）Supports the CYLC flag (per GB/T 40055-2021)\
+-   🎖️ 支持中国人民解放军军旗及陆军、海军、空军、火箭军、军事航天部队、网络空间部队、信息支援部队、联勤保障部队等军种旗，以及中国人民武装警察部队旗 Supports the PLA flag and service branch flags (Army, Navy, Air Force, Rocket Force, Aerospace Force, Cyberspace Force, Information Support Force, Joint Logistics Support Force), and the Chinese People’s Armed Police Force flag)\
+-   🔍 统一接口 `plotCNFlag()`，可通过中文或英文名称直接调用所有旗帜 Unified interface `plotCNFlag()` to plot any supported flag by Chinese or English name
 
----
+------------------------------------------------------------------------
 
-## 📦 Usage | 使用方法
+## 📦 Usage \| 使用方法
 
-### Install  安装
+### Install 安装
 
-```r
+``` r
 install.packages("ggChinaFlag") # From CRAN
 
 # install.packages("devtools")
@@ -34,10 +32,10 @@ devtools::install_github("XLions/ggChinaFlag") # From GitHub
 
 `plotCNFlag(input, label = TRUE)`
 
-- `input` : 旗帜名称，支持中文或英文（详见下方列表）。
-- `label` : 是否显示标题与文字说明（默认 `TRUE`）。
+-   `input` : 旗帜名称，支持中文或英文（详见下方列表）。
+-   `label` : 是否显示标题与文字说明（默认 `TRUE`）。
 
-```r
+``` r
 library(ggChinaFlag)
 
 # 绘制中华人民共和国国旗
@@ -56,7 +54,7 @@ plotCNFlag("PLA Navy Flag", label = FALSE)
 
 ### See available flag names 查看可用的旗帜名称
 
-```r
+``` r
 FlagStorage()                # 默认 lang = "Chinese"
 
 # 中文名称
@@ -72,7 +70,7 @@ FlagStorage("English")
 以下所有旗帜均可通过 `plotCNFlag()` 使用中文或英文名称直接调用，也可通过对应的专用函数调用。
 
 | 类别 | 中文名称 | English name | 专用函数 |
-|------|----------|--------------|----------|
+|------------------|------------------|-------------------|------------------|
 | 🇨🇳 国旗 | 中华人民共和国国旗 | Flag of the People's Republic of China | `plot_P.R.CHINA_flag()` |
 |  | 中华民国青天白日旗 | Flag of the Republic of China (Blue Sky, White Sun, and Red Earth) | `plot_ROC_KMT_flag()` |
 |  | 中华民国北洋政府五色旗 | Five-Color Flag of the Beiyang Government of the Republic of China | `plot_ROC_Beiyang_flag()` |
@@ -91,28 +89,37 @@ FlagStorage("English")
 |  | 中国人民解放军网络空间部队军旗 | PLA Cyberspace Force Flag | `plot_PLA(subtype = "网络空间部队")` |
 |  | 中国人民解放军信息支援部队军旗 | PLA Information Support Force Flag | `plot_PLA(subtype = "信息支援部队")` |
 |  | 中国人民解放军联勤保障部队军旗 | PLA Joint Logistics Support Force Flag | `plot_PLA(subtype = "联勤保障部队")` |
+|  | 中国人民武装警察部队旗 | the Chinese People’s Armed Police Force Flag | `plot_PLA(subtype = "武警")` |
 
 > 注：`plot_PLA()` 的 `subtype` 参数也接受英文名称或缩写（如 `"Navy"`、`"PLA Rocket Force"` 等），详见函数文档。
 
----
+------------------------------------------------------------------------
 
-## 📖 Background | 历史背景
+## 📖 Background \| 历史背景
 
-This package is intended for **educational and academic use only**.  
+This package is intended for **educational and academic use only**.\
 All flag designs follow publicly available historical construction specifications.
 
-本包仅用于教学、科研和历史展示用途，  
+本包仅用于教学、科研和历史展示用途，\
 旗帜构造参考公开历史资料，不涉及任何政治立场。
 
----
+------------------------------------------------------------------------
 
 ## 📜 License
 
 GPL-3 © Zhaoshuo Liu
 
----
+------------------------------------------------------------------------
+
+## 🙏 Acknowledgements \| 致谢
+
+Special thanks to my friend **M. Luo**, **James Li**, my father **J. Liu**, and my mother **Y. Zhao** for their artistic advice on the package logo design, and for their help and guidance on the geometric construction of the flags.
+
+特别感谢我的朋友 **M. Luo**, **James Li**、父亲 **J. Liu** 和母亲 **Y. Zhao** 在包 Logo 美术设计上提出的建议，以及在旗帜几何绘制上给予的帮助和指导。
+
+------------------------------------------------------------------------
 
 ## 👤 Author
 
-**Zhaoshuo Liu**  
+**Zhaoshuo Liu**\
 ORCID: [0009-0007-3615-5724](https://orcid.org/0009-0007-3615-5724)

@@ -60,7 +60,8 @@ FlagStorage <- function(lang = c('Chinese', 'English')) {
         '\u4e2d\u56fd\u4eba\u6c11\u89e3\u653e\u519b\u519b\u4e8b\u822a\u5929\u90e8\u961f\u519b\u65d7',
         '\u4e2d\u56fd\u4eba\u6c11\u89e3\u653e\u519b\u7f51\u7edc\u7a7a\u95f4\u90e8\u961f\u519b\u65d7',
         '\u4e2d\u56fd\u4eba\u6c11\u89e3\u653e\u519b\u4fe1\u606f\u652f\u63f4\u90e8\u961f\u519b\u65d7',
-        '\u4e2d\u56fd\u4eba\u6c11\u89e3\u653e\u519b\u8054\u52e4\u4fdd\u969c\u90e8\u961f\u519b\u65d7'
+        '\u4e2d\u56fd\u4eba\u6c11\u89e3\u653e\u519b\u8054\u52e4\u4fdd\u969c\u90e8\u961f\u519b\u65d7',
+        '\u4e2d\u56fd\u4eba\u6c11\u6b66\u88c5\u8b66\u5bdf\u90e8\u961f\u65d7'
       )
     ))
   } else {
@@ -91,7 +92,8 @@ FlagStorage <- function(lang = c('Chinese', 'English')) {
         "PLA Aerospace Force Flag",
         "PLA Cyberspace Force Flag",
         "PLA Information Support Force Flag",
-        "PLA Joint Logistics Support Force Flag"
+        "PLA Joint Logistics Support Force Flag",
+        "The Chinese People\u2019s Armed Police Force"
       )
     ))
   }
@@ -158,7 +160,6 @@ plotCNFlag <- function(input, label = TRUE) {
     stop("\u8f93\u5165\u540d\u79f0\u65e0\u6cd5\u8bc6\u522b\uff0c\u8bf7\u4f7f\u7528\u5185\u7f6e\u6807\u51c6\u540d\u79f0\uff08\u4e2d\u82f1\u6587\u5747\u53ef\uff09\u3002")
   }
   # 绘图函数列表，顺序与名称列表完全对应
-  # 共 4 + 2 + 2 + 1 + 9 = 18 个
   flag_funcs <- list(
     function(label) plot_P.R.CHINA_flag(label = label),      # 1
     function(label) plot_ROC_KMT_flag(label = label),        # 2
@@ -177,7 +178,8 @@ plotCNFlag <- function(input, label = TRUE) {
     function(label) plot_PLA(subtype = "\u519b\u4e8b\u822a\u5929\u90e8\u961f", label = label), # 15
     function(label) plot_PLA(subtype = "\u7f51\u7edc\u7a7a\u95f4\u90e8\u961f", label = label), # 16
     function(label) plot_PLA(subtype = "\u4fe1\u606f\u652f\u63f4\u90e8\u961f", label = label), # 17
-    function(label) plot_PLA(subtype = "\u8054\u52e4\u4fdd\u969c\u90e8\u961f", label = label)  # 18
+    function(label) plot_PLA(subtype = "\u8054\u52e4\u4fdd\u969c\u90e8\u961f", label = label),  # 18
+    function(label) plot_PLA(subtype = "\u6b66\u8b66", label = label)  # 19
   )
   # 调用对应函数，传递 label 参数
   flag_funcs[[idx]](label = label)
